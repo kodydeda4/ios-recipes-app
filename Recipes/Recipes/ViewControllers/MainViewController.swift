@@ -27,18 +27,7 @@ final class MainViewController: NavigationController {
   
   @NavigationModelBuilder private var stack: [NavigationModel] {
     NavigationModel.root(dataID: DataID.index) { [weak self] in
-      self?.makeExampleIndexViewController()
-    }
-    
-    if let example = state.showExample {
-      NavigationModel(
-        dataID: DataID.item(example),
-        makeViewController: { [weak self] in
-          self?.makeExampleController(example)
-        },
-        remove: { [weak self] in
-          self?.state.showExample = nil
-        })
+      MealListViewController()
     }
   }
   
@@ -68,6 +57,9 @@ final class MainViewController: NavigationController {
     case .product:
       viewController = ProductViewController()
       
+    case .mealList:
+      viewController = MealListViewController()
+      
     }
     
     viewController.title = example.title
@@ -78,6 +70,7 @@ final class MainViewController: NavigationController {
 /// All top-level examples available in this project.
 enum Example: CaseIterable {
   case product
+  case mealList
   
   // MARK: Internal
   
@@ -85,6 +78,8 @@ enum Example: CaseIterable {
     switch self {
     case .product:
       return "Product Detail Page"
+    case .mealList:
+      return "Meal List Page"
     }
   }
   
@@ -92,7 +87,8 @@ enum Example: CaseIterable {
     switch self {
     case .product:
       return "An example that combines collections, bars, and presentations"
+    case .mealList:
+      return "An example that fetches models from an api."
     }
   }
 }
-

@@ -20,3 +20,4 @@ final class ProductViewController: CollectionViewController {
       style: .init(height: 250, contentMode: .scaleAspectFill))
   }
 }
+
