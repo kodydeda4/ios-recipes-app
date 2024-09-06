@@ -8,6 +8,7 @@ class MealListViewController: CollectionViewController {
   
   init() {
     super.init(layout: UICollectionViewCompositionalLayout.list)
+    self.title = "Recipes"
     self.onAppear()
     setItems(items, animated: false)
   }

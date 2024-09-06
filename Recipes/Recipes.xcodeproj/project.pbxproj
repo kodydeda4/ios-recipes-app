@@ -13,7 +13,7 @@
 		331B7D972C8B43A90033DFA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 331B7D962C8B43A90033DFA9 /* Assets.xcassets */; };
 		331B7D9A2C8B43A90033DFA9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 331B7D992C8B43A90033DFA9 /* Base */; };
 		331B7DB92C8B49B70033DFA9 /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 331B7DB82C8B49B70033DFA9 /* Epoxy */; };
-		333E61A52C8B4F1000FF8823 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61A42C8B4F1000FF8823 /* MainViewController.swift */; };
+		333E61A52C8B4F1000FF8823 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61A42C8B4F1000FF8823 /* AppViewController.swift */; };
 		333E61A92C8B53D200FF8823 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61A82C8B53D200FF8823 /* Label.swift */; };
 		333E61AB2C8B540300FF8823 /* TextRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61AA2C8B540300FF8823 /* TextRow.swift */; };
 		333E61AE2C8B545500FF8823 /* NavigationWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61AD2C8B545500FF8823 /* NavigationWrapperViewController.swift */; };
@@ -37,7 +37,7 @@
 		331B7D962C8B43A90033DFA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		331B7D992C8B43A90033DFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		331B7D9B2C8B43A90033DFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		333E61A42C8B4F1000FF8823 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		333E61A42C8B4F1000FF8823 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		333E61A82C8B53D200FF8823 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		333E61AA2C8B540300FF8823 /* TextRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRow.swift; sourceTree = "<group>"; };
 		333E61AD2C8B545500FF8823 /* NavigationWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWrapperViewController.swift; sourceTree = "<group>"; };
@@ -84,10 +84,10 @@
 		331B7D8C2C8B43A70033DFA9 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				33B686032C8B58E300B4C33D /* Dependencies */,
 				331B7DA12C8B43F10033DFA9 /* Application */,
 				331B7DA22C8B43FE0033DFA9 /* Assets */,
 				331B7DA32C8B44030033DFA9 /* Data */,
+				33B686032C8B58E300B4C33D /* Dependencies */,
 				331B7DA42C8B44070033DFA9 /* Extensions */,
 				331B7DA52C8B440C0033DFA9 /* ViewControllers */,
 				331B7DA62C8B44110033DFA9 /* Views */,
@@ -136,7 +136,7 @@
 				333E61AC2C8B544C00FF8823 /* Helpers */,
 				331B7D912C8B43A70033DFA9 /* ProductViewController.swift */,
 				3351F5A72C8B6CF900978094 /* MealListViewController.swift */,
-				333E61A42C8B4F1000FF8823 /* MainViewController.swift */,
+				333E61A42C8B4F1000FF8823 /* AppViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -294,7 +294,7 @@
 				333E61B22C8B54A900FF8823 /* UIImageView+RemoteImage.swift in Sources */,
 				33B686112C8B597500B4C33D /* ApiClient+liveKey.swift in Sources */,
 				33B686022C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift in Sources */,
-				333E61A52C8B4F1000FF8823 /* MainViewController.swift in Sources */,
+				333E61A52C8B4F1000FF8823 /* AppViewController.swift in Sources */,
 				33B6860B2C8B592800B4C33D /* ApiClient+Failure.swift in Sources */,
 				33B686062C8B58FE00B4C33D /* ApiClient.swift in Sources */,
 			);

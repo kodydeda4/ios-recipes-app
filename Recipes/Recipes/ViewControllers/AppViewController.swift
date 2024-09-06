@@ -1,7 +1,7 @@
 import Epoxy
 import UIKit
 
-final class MainViewController: NavigationController {
+final class AppViewController: NavigationController {
   
   // MARK: Lifecycle
   
@@ -26,8 +26,19 @@ final class MainViewController: NavigationController {
   }
   
   @NavigationModelBuilder private var stack: [NavigationModel] {
-    NavigationModel.root(dataID: DataID.index) { [weak self] in
+    NavigationModel.root(dataID: DataID.index) {
       MealListViewController()
+    }
+    
+    if let example = state.showExample {
+      NavigationModel(
+        dataID: DataID.item(example),
+        makeViewController: { [weak self] in
+          self?.makeExampleController(example)
+        },
+        remove: { [weak self] in
+          self?.state.showExample = nil
+        })
     }
   }
   
