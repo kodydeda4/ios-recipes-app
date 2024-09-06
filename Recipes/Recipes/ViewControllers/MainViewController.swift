@@ -56,7 +56,7 @@ final class MainViewController: NavigationController {
           }
         }
       })
-    viewController.title = "Epoxy"
+    viewController.title = "Recipes"
     return viewController
   }
   
