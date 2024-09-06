@@ -3,7 +3,8 @@ import UIKit
 
 /// Source code for `EpoxyCollectionView` "Counter" example from `README.md`:
 class MealListViewController: CollectionViewController {
-  
+  var api = ApiClient.liveValue
+
   // MARK: Lifecycle
   
   init() {
@@ -15,23 +16,26 @@ class MealListViewController: CollectionViewController {
   
   // MARK: Private
   
-  private enum DataID {
-    case row
+  private enum DataID: Hashable  {
+    case row(ApiClient.Meal.ID)
   }
   
-  private var api = ApiClient.liveValue
-  private let mealCategory = ApiClient.MealCategory.dessert
+  private struct State {
+    let mealCategory = ApiClient.MealCategory.dessert
+    var meals = [ApiClient.Meal]()
+  }
   
-  private var meals = [ApiClient.Meal]() {
+
+  private var state = State() {
     didSet { setItems(items, animated: true) }
   }
   
   private func onAppear() {
     Task {
       do {
-        let response = try await self.api.fetchAllMeals(self.mealCategory)
+        let response = try await self.api.fetchAllMeals(self.state.mealCategory)
         await MainActor.run {
-          self.meals = response
+          self.state.meals = response
           print("did update self.meals")
         }
       } catch {
@@ -41,9 +45,9 @@ class MealListViewController: CollectionViewController {
   }
   
   @ItemModelBuilder private var items: [ItemModeling] {
-    self.meals.map { meal in
+    self.state.meals.map { meal in
       TextRow.itemModel(
-        dataID: DataID.row,
+        dataID: DataID.row(meal.id),
         content: .init(
           title: "\(meal.strMeal)",
           body: "Description"),
