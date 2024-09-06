@@ -3,7 +3,6 @@ import UIKit
 
 /// Source code for `EpoxyCollectionView` "Counter" example from `README.md`:
 class MealListViewController: CollectionViewController {
-  var api = ApiClient.liveValue
 
   // MARK: Lifecycle
   
@@ -25,15 +24,20 @@ class MealListViewController: CollectionViewController {
     var meals = [ApiClient.Meal]()
   }
   
+  private struct Environment {
+    var api = ApiClient.liveValue
+  }
 
   private var state = State() {
     didSet { setItems(items, animated: true) }
   }
   
+  private let environment = Environment()
+
   private func onAppear() {
     Task {
       do {
-        let response = try await self.api.fetchAllMeals(self.state.mealCategory)
+        let response = try await self.environment.api.fetchAllMeals(self.state.mealCategory)
         await MainActor.run {
           self.state.meals = response
           print("did update self.meals")
