@@ -58,87 +58,13 @@ class MealListViewController: CollectionViewController {
     self.state.meals.map { meal in
       TextRow.itemModel(
         dataID: DataID.row(meal.id),
-        content: .init(title: "\(meal.strMeal)")
+        content: .init(title: "\(meal.strMeal)"),
+        style: .small
       )
       .didSelect { [weak self] _ in
         self?.didSelectMealID(meal.id)
       }
     }
-  }
-}
-
-// MARK: - TextRow
-
-private final class TextRow: UIView, EpoxyableView {
-  
-  // MARK: Lifecycle
-  
-  init() {
-    super.init(frame: .zero)
-    translatesAutoresizingMaskIntoConstraints = false
-    layoutMargins = UIEdgeInsets(top: 16, left: 24, bottom: 16, right: 24)
-    group.install(in: self)
-    group.constrainToMarginsWithHighPriorityBottom()
-  }
-  
-  required init?(coder _: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  // MARK: Internal
-  
-  struct Content: Equatable {
-    let title: String
-  }
-  
-  func setContent(_ content: Content, animated _: Bool) {
-    let titleStyle: UIFont.TextStyle
-    titleStyle = .body
-    
-    group.setItems {
-      Label.groupItem(
-        dataID: DataID.title,
-        content: content.title,
-        style: .style(with: titleStyle)
-      )
-      .adjustsFontForContentSizeCategory(true)
-      .textColor(UIColor.label)
-    }
-  }
-  
-  // MARK: Private
-  
-  private enum DataID {
-    case title
-  }
-  
-  private let group = VGroup(spacing: 8)
-}
-
-// MARK: SelectableView
-
-extension TextRow: SelectableView {
-  func didSelect() {
-    // Handle this row being selected, e.g. to trigger haptics:
-    UISelectionFeedbackGenerator().selectionChanged()
-  }
-}
-
-// MARK: HighlightableView
-
-extension TextRow: HighlightableView {
-  func didHighlight(_ isHighlighted: Bool) {
-    UIView.animate(withDuration: 0.15, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction]) {
-      self.transform = isHighlighted ? CGAffineTransform(scaleX: 0.95, y: 0.95) : .identity
-    }
-  }
-}
-
-// MARK: DisplayRespondingView
-
-extension TextRow: DisplayRespondingView {
-  func didDisplay(_: Bool) {
-    // Handle this row being displayed.
   }
 }
 

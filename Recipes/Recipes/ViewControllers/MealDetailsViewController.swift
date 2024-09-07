@@ -13,7 +13,7 @@ final class MealDetailsViewController: CollectionViewController {
   
   private enum DataID {
     enum Item {
-      case headerImage, titleRow, imageRow
+      case headerImage, titleRow, instructionsRow
     }
   }
   
@@ -22,6 +22,16 @@ final class MealDetailsViewController: CollectionViewController {
       dataID: DataID.Item.headerImage,
       content: .init(imageURL: URL(string: "\(mealDetails.strMealThumb)")!),
       style: .init(height: 250, contentMode: .scaleAspectFill)
+    )
+    TextRow.itemModel(
+      dataID: DataID.Item.titleRow,
+      content: .init(title: "\(mealDetails.strMeal)"),
+      style: .large
+    )
+    TextRow.itemModel(
+      dataID: DataID.Item.instructionsRow,
+      content: .init(title: "\(mealDetails.strInstructions)"),
+      style: .small
     )
   }
 }
@@ -83,7 +93,6 @@ private final class ImageMarquee: UIView, EpoxyableView {
   }
 
 }
-
 
 // MARK: - Previews
 
