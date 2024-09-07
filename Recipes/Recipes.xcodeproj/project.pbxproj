@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		331B7D8E2C8B43A70033DFA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331B7D8D2C8B43A70033DFA9 /* AppDelegate.swift */; };
-		331B7D922C8B43A70033DFA9 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331B7D912C8B43A70033DFA9 /* ProductViewController.swift */; };
+		331B7D922C8B43A70033DFA9 /* MealDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331B7D912C8B43A70033DFA9 /* MealDetailsViewController.swift */; };
 		331B7D952C8B43A70033DFA9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 331B7D942C8B43A70033DFA9 /* Base */; };
 		331B7D972C8B43A90033DFA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 331B7D962C8B43A90033DFA9 /* Assets.xcassets */; };
 		331B7D9A2C8B43A90033DFA9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 331B7D992C8B43A90033DFA9 /* Base */; };
@@ -20,19 +20,19 @@
 		333E61B02C8B548800FF8823 /* ImageMarquee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61AF2C8B548800FF8823 /* ImageMarquee.swift */; };
 		333E61B22C8B54A900FF8823 /* UIImageView+RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61B12C8B54A900FF8823 /* UIImageView+RemoteImage.swift */; };
 		3351F5A82C8B6CF900978094 /* MealListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3351F5A72C8B6CF900978094 /* MealListViewController.swift */; };
+		33714FA92C8CC7C000233122 /* UIKitPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33714FA82C8CC7C000233122 /* UIKitPreview.swift */; };
 		33B686022C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B686012C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift */; };
 		33B686062C8B58FE00B4C33D /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B686052C8B58FE00B4C33D /* ApiClient.swift */; };
 		33B686092C8B591900B4C33D /* ApiClient+MealCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B686082C8B591900B4C33D /* ApiClient+MealCategory.swift */; };
 		33B6860B2C8B592800B4C33D /* ApiClient+Failure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B6860A2C8B592800B4C33D /* ApiClient+Failure.swift */; };
 		33B6860D2C8B593900B4C33D /* ApiClient+Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B6860C2C8B593900B4C33D /* ApiClient+Meal.swift */; };
 		33B6860F2C8B594300B4C33D /* ApiClient+MealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B6860E2C8B594300B4C33D /* ApiClient+MealDetails.swift */; };
-		33B686112C8B597500B4C33D /* ApiClient+liveKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B686102C8B597500B4C33D /* ApiClient+liveKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		331B7D8A2C8B43A70033DFA9 /* Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		331B7D8D2C8B43A70033DFA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		331B7D912C8B43A70033DFA9 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		331B7D912C8B43A70033DFA9 /* MealDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsViewController.swift; sourceTree = "<group>"; };
 		331B7D942C8B43A70033DFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		331B7D962C8B43A90033DFA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		331B7D992C8B43A90033DFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -44,13 +44,13 @@
 		333E61AF2C8B548800FF8823 /* ImageMarquee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMarquee.swift; sourceTree = "<group>"; };
 		333E61B12C8B54A900FF8823 /* UIImageView+RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RemoteImage.swift"; sourceTree = "<group>"; };
 		3351F5A72C8B6CF900978094 /* MealListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewController.swift; sourceTree = "<group>"; };
+		33714FA82C8CC7C000233122 /* UIKitPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitPreview.swift; sourceTree = "<group>"; };
 		33B686012C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCompositionalLayout+List.swift"; sourceTree = "<group>"; };
 		33B686052C8B58FE00B4C33D /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		33B686082C8B591900B4C33D /* ApiClient+MealCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiClient+MealCategory.swift"; sourceTree = "<group>"; };
 		33B6860A2C8B592800B4C33D /* ApiClient+Failure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiClient+Failure.swift"; sourceTree = "<group>"; };
 		33B6860C2C8B593900B4C33D /* ApiClient+Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiClient+Meal.swift"; sourceTree = "<group>"; };
 		33B6860E2C8B594300B4C33D /* ApiClient+MealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiClient+MealDetails.swift"; sourceTree = "<group>"; };
-		33B686102C8B597500B4C33D /* ApiClient+liveKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiClient+liveKey.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +84,7 @@
 		331B7D8C2C8B43A70033DFA9 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				33714FA72C8CC7AD00233122 /* UIKit+ */,
 				331B7DA12C8B43F10033DFA9 /* Application */,
 				331B7DA22C8B43FE0033DFA9 /* Assets */,
 				331B7DA32C8B44030033DFA9 /* Data */,
@@ -134,7 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				333E61AC2C8B544C00FF8823 /* Helpers */,
-				331B7D912C8B43A70033DFA9 /* ProductViewController.swift */,
+				331B7D912C8B43A70033DFA9 /* MealDetailsViewController.swift */,
 				3351F5A72C8B6CF900978094 /* MealListViewController.swift */,
 				333E61A42C8B4F1000FF8823 /* AppViewController.swift */,
 			);
@@ -175,6 +176,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		33714FA72C8CC7AD00233122 /* UIKit+ */ = {
+			isa = PBXGroup;
+			children = (
+				33714FA82C8CC7C000233122 /* UIKitPreview.swift */,
+			);
+			path = "UIKit+";
+			sourceTree = "<group>";
+		};
 		33B686032C8B58E300B4C33D /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +197,6 @@
 			children = (
 				33B686072C8B591300B4C33D /* Models */,
 				33B686052C8B58FE00B4C33D /* ApiClient.swift */,
-				33B686102C8B597500B4C33D /* ApiClient+liveKey.swift */,
 			);
 			path = ApiClient;
 			sourceTree = "<group>";
@@ -286,13 +294,13 @@
 				333E61AE2C8B545500FF8823 /* NavigationWrapperViewController.swift in Sources */,
 				3351F5A82C8B6CF900978094 /* MealListViewController.swift in Sources */,
 				33B6860F2C8B594300B4C33D /* ApiClient+MealDetails.swift in Sources */,
+				33714FA92C8CC7C000233122 /* UIKitPreview.swift in Sources */,
 				333E61B02C8B548800FF8823 /* ImageMarquee.swift in Sources */,
 				33B686092C8B591900B4C33D /* ApiClient+MealCategory.swift in Sources */,
-				331B7D922C8B43A70033DFA9 /* ProductViewController.swift in Sources */,
+				331B7D922C8B43A70033DFA9 /* MealDetailsViewController.swift in Sources */,
 				331B7D8E2C8B43A70033DFA9 /* AppDelegate.swift in Sources */,
 				333E61A92C8B53D200FF8823 /* Label.swift in Sources */,
 				333E61B22C8B54A900FF8823 /* UIImageView+RemoteImage.swift in Sources */,
-				33B686112C8B597500B4C33D /* ApiClient+liveKey.swift in Sources */,
 				33B686022C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift in Sources */,
 				333E61A52C8B4F1000FF8823 /* AppViewController.swift in Sources */,
 				33B6860B2C8B592800B4C33D /* ApiClient+Failure.swift in Sources */,

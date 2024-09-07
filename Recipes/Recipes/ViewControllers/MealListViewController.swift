@@ -1,17 +1,23 @@
 import Epoxy
 import UIKit
+import SwiftUI
+import Combine
 
-/// Source code for `EpoxyCollectionView` "Counter" example from `README.md`:
 class MealListViewController: CollectionViewController {
-
+  
   // MARK: Lifecycle
   
-  init() {
+  init(
+    didSelectMealID: @escaping (ApiClient.Meal.ID) -> Void = { _ in }
+  ) {
+    self.didSelectMealID = didSelectMealID
     super.init(layout: UICollectionViewCompositionalLayout.list)
     self.title = "Recipes"
     self.onAppear()
     setItems(items, animated: false)
   }
+  
+  var didSelectMealID: (ApiClient.Meal.ID) -> Void
   
   // MARK: Private
   
@@ -22,30 +28,30 @@ class MealListViewController: CollectionViewController {
   private struct State {
     let mealCategory = ApiClient.MealCategory.dessert
     var meals = [ApiClient.Meal]()
+    var cancellables = Set<AnyCancellable>()
   }
   
   private struct Environment {
     var api = ApiClient.liveValue
+    var mainQueue = DispatchQueue.main
   }
-
+  
   private var state = State() {
     didSet { setItems(items, animated: true) }
   }
   
   private let environment = Environment()
-
+  
   private func onAppear() {
-    Task {
-      do {
-        let response = try await self.environment.api.fetchAllMeals(self.state.mealCategory)
-        await MainActor.run {
-          self.state.meals = response
-          print("did update self.meals")
-        }
-      } catch {
-        print(error.localizedDescription)
+    self.environment.api.fetchAllMeals(self.state.mealCategory)
+      .receive(on: self.environment.mainQueue)
+      .sink { error in
+        print(error)
+      } receiveValue: { [weak self] value in
+        print(value)
+        self?.state.meals = value
       }
-    }
+      .store(in: &state.cancellables)
   }
   
   @ItemModelBuilder private var items: [ItemModeling] {
@@ -55,10 +61,21 @@ class MealListViewController: CollectionViewController {
         content: .init(
           title: "\(meal.strMeal)",
           body: "Description"),
-        style: .large)
+        style: .large
+      )
       .didSelect { [weak self] _ in
-        //...
+        self?.didSelectMealID(meal.id)
       }
+    }
+  }
+}
+
+// MARK: - Previews
+
+struct MealListViewController_Previews: PreviewProvider {
+  static var previews: some View {
+    UIKitPreview {
+      MealListViewController()
     }
   }
 }

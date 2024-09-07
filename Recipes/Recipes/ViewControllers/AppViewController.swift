@@ -1,5 +1,7 @@
 import Epoxy
 import UIKit
+import SwiftUI
+import Combine
 
 final class AppViewController: NavigationController {
   
@@ -14,92 +16,66 @@ final class AppViewController: NavigationController {
   
   private enum DataID: Hashable {
     case index
-    case item(Example)
+    case meal(ApiClient.Meal.ID)
   }
   
   private struct State {
-    var showExample: Example?
+    var destinationMealDetails: ApiClient.MealDetails?
+    var cancellables = Set<AnyCancellable>()
+  }
+  
+  private struct Environment {
+    var api = ApiClient.liveValue
+    var mainQueue = DispatchQueue.main
   }
   
   private var state = State() {
     didSet { setStack(stack, animated: true) }
   }
   
+  private let environment = Environment()
+  
   @NavigationModelBuilder private var stack: [NavigationModel] {
-    NavigationModel.root(dataID: DataID.index) {
-      MealListViewController()
+    NavigationModel.root(dataID: DataID.index) { [weak self] in
+      MealListViewController(
+        didSelectMealID: { id in
+          self?.navigateToMealDetails(id: id)
+        }
+      )
     }
     
-    if let example = state.showExample {
+    if let value = state.destinationMealDetails {
       NavigationModel(
-        dataID: DataID.item(example),
-        makeViewController: { [weak self] in
-          self?.makeExampleController(example)
+        dataID: DataID.meal(value.id),
+        makeViewController: {
+          MealDetailsViewController(mealDetails: value)
         },
         remove: { [weak self] in
-          self?.state.showExample = nil
-        })
-    }
-  }
-  
-  private func makeExampleIndexViewController() -> UIViewController {
-    let viewController = CollectionViewController(
-      layout: UICollectionViewCompositionalLayout.list,
-      items: {
-        Example.allCases.map { example in
-          TextRow.itemModel(
-            dataID: example,
-            content: .init(title: example.title, body: example.body),
-            style: .small)
-          .didSelect { [weak self] _ in
-            self?.state.showExample = example
-          }
+          self?.state.destinationMealDetails = .none
         }
-      })
-    viewController.title = "Recipes"
-    return viewController
+      )
+    }
   }
   
-  private func makeExampleController(_ example: Example) -> UIViewController {
-    let viewController: UIViewController
-    
-    switch example {
-      
-    case .product:
-      viewController = ProductViewController()
-      
-    case .mealList:
-      viewController = MealListViewController()
-      
-    }
-    
-    viewController.title = example.title
-    return viewController
+  private func navigateToMealDetails(id: ApiClient.MealDetails.ID) {
+    self.environment.api.fetchMealDetailsById(id)
+      .receive(on: self.environment.mainQueue)
+      .sink { error in
+        print(error)
+      } receiveValue: { [weak self] value in
+        print(value)
+        self?.state.destinationMealDetails = value.last
+      }
+      .store(in: &self.state.cancellables)
   }
 }
 
-/// All top-level examples available in this project.
-enum Example: CaseIterable {
-  case product
-  case mealList
-  
-  // MARK: Internal
-  
-  var title: String {
-    switch self {
-    case .product:
-      return "Product Detail Page"
-    case .mealList:
-      return "Meal List Page"
-    }
-  }
-  
-  var body: String {
-    switch self {
-    case .product:
-      return "An example that combines collections, bars, and presentations"
-    case .mealList:
-      return "An example that fetches models from an api."
+// MARK: - Previews
+
+struct AppViewController_Previews: PreviewProvider {
+  static var previews: some View {
+    UIKitPreview {
+      AppViewController()
     }
   }
 }
