@@ -15,9 +15,7 @@
 		331B7DB92C8B49B70033DFA9 /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 331B7DB82C8B49B70033DFA9 /* Epoxy */; };
 		333E61A52C8B4F1000FF8823 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61A42C8B4F1000FF8823 /* AppViewController.swift */; };
 		333E61A92C8B53D200FF8823 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61A82C8B53D200FF8823 /* Label.swift */; };
-		333E61AB2C8B540300FF8823 /* TextRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61AA2C8B540300FF8823 /* TextRow.swift */; };
 		333E61AE2C8B545500FF8823 /* NavigationWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61AD2C8B545500FF8823 /* NavigationWrapperViewController.swift */; };
-		333E61B02C8B548800FF8823 /* ImageMarquee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61AF2C8B548800FF8823 /* ImageMarquee.swift */; };
 		333E61B22C8B54A900FF8823 /* UIImageView+RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61B12C8B54A900FF8823 /* UIImageView+RemoteImage.swift */; };
 		3351F5A82C8B6CF900978094 /* MealListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3351F5A72C8B6CF900978094 /* MealListViewController.swift */; };
 		33714FA92C8CC7C000233122 /* UIKitPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33714FA82C8CC7C000233122 /* UIKitPreview.swift */; };
@@ -39,9 +37,7 @@
 		331B7D9B2C8B43A90033DFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		333E61A42C8B4F1000FF8823 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		333E61A82C8B53D200FF8823 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		333E61AA2C8B540300FF8823 /* TextRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRow.swift; sourceTree = "<group>"; };
 		333E61AD2C8B545500FF8823 /* NavigationWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWrapperViewController.swift; sourceTree = "<group>"; };
-		333E61AF2C8B548800FF8823 /* ImageMarquee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMarquee.swift; sourceTree = "<group>"; };
 		333E61B12C8B54A900FF8823 /* UIImageView+RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RemoteImage.swift"; sourceTree = "<group>"; };
 		3351F5A72C8B6CF900978094 /* MealListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewController.swift; sourceTree = "<group>"; };
 		33714FA82C8CC7C000233122 /* UIKitPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitPreview.swift; sourceTree = "<group>"; };
@@ -146,8 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				333E61A62C8B53B200FF8823 /* LayoutGroups */,
-				333E61AA2C8B540300FF8823 /* TextRow.swift */,
-				333E61AF2C8B548800FF8823 /* ImageMarquee.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -289,13 +283,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				333E61AB2C8B540300FF8823 /* TextRow.swift in Sources */,
 				33B6860D2C8B593900B4C33D /* ApiClient+Meal.swift in Sources */,
 				333E61AE2C8B545500FF8823 /* NavigationWrapperViewController.swift in Sources */,
 				3351F5A82C8B6CF900978094 /* MealListViewController.swift in Sources */,
 				33B6860F2C8B594300B4C33D /* ApiClient+MealDetails.swift in Sources */,
 				33714FA92C8CC7C000233122 /* UIKitPreview.swift in Sources */,
-				333E61B02C8B548800FF8823 /* ImageMarquee.swift in Sources */,
 				33B686092C8B591900B4C33D /* ApiClient+MealCategory.swift in Sources */,
 				331B7D922C8B43A70033DFA9 /* MealDetailsViewController.swift in Sources */,
 				331B7D8E2C8B43A70033DFA9 /* AppDelegate.swift in Sources */,
