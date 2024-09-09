@@ -4,9 +4,6 @@ import SwiftUI
 import Combine
 
 class MealListViewController: CollectionViewController {
-  
-  // MARK: Lifecycle
-  
   init(
     state: State,
     didSelectMealID: @escaping (ApiClient.Meal.ID) -> Void = { _ in }
@@ -14,7 +11,7 @@ class MealListViewController: CollectionViewController {
     self.state = state
     self.didSelectMealID = didSelectMealID
     super.init(layout: UICollectionViewCompositionalLayout.list)
-    self.title = "Recipes"
+    self.title = state.mealCategory.strCategory
     self.onAppear()
     setItems(items, animated: false)
   }
@@ -23,8 +20,6 @@ class MealListViewController: CollectionViewController {
     didSet { setItems(items, animated: true) }
   }
   var didSelectMealID: (ApiClient.Meal.ID) -> Void
-  
-  // MARK: Private
   
   private enum DataID: Hashable  {
     case row(ApiClient.Meal.ID)
@@ -40,10 +35,6 @@ class MealListViewController: CollectionViewController {
     var api = ApiClient.liveValue
     var mainQueue = DispatchQueue.main
   }
-  
-//  private var state = State() {
-//    didSet { setItems(items, animated: true) }
-//  }
   
   private let environment = Environment()
   

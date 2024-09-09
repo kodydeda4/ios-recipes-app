@@ -13,7 +13,7 @@
 		331B7D972C8B43A90033DFA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 331B7D962C8B43A90033DFA9 /* Assets.xcassets */; };
 		331B7D9A2C8B43A90033DFA9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 331B7D992C8B43A90033DFA9 /* Base */; };
 		331B7DB92C8B49B70033DFA9 /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 331B7DB82C8B49B70033DFA9 /* Epoxy */; };
-		333E61A52C8B4F1000FF8823 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61A42C8B4F1000FF8823 /* AppViewController.swift */; };
+		333E61A52C8B4F1000FF8823 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61A42C8B4F1000FF8823 /* RootViewController.swift */; };
 		333E61A92C8B53D200FF8823 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61A82C8B53D200FF8823 /* Label.swift */; };
 		333E61AE2C8B545500FF8823 /* NavigationWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61AD2C8B545500FF8823 /* NavigationWrapperViewController.swift */; };
 		333E61B22C8B54A900FF8823 /* UIImageView+RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61B12C8B54A900FF8823 /* UIImageView+RemoteImage.swift */; };
@@ -37,7 +37,7 @@
 		331B7D962C8B43A90033DFA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		331B7D992C8B43A90033DFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		331B7D9B2C8B43A90033DFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		333E61A42C8B4F1000FF8823 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
+		333E61A42C8B4F1000FF8823 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		333E61A82C8B53D200FF8823 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		333E61AD2C8B545500FF8823 /* NavigationWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWrapperViewController.swift; sourceTree = "<group>"; };
 		333E61B12C8B54A900FF8823 /* UIImageView+RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RemoteImage.swift"; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 				331B7D912C8B43A70033DFA9 /* MealDetailsViewController.swift */,
 				338D25DF2C8F707300D6D869 /* MealCategoryListViewController.swift */,
 				3351F5A72C8B6CF900978094 /* MealListViewController.swift */,
-				333E61A42C8B4F1000FF8823 /* AppViewController.swift */,
+				333E61A42C8B4F1000FF8823 /* RootViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -302,7 +302,7 @@
 				333E61A92C8B53D200FF8823 /* Label.swift in Sources */,
 				333E61B22C8B54A900FF8823 /* UIImageView+RemoteImage.swift in Sources */,
 				33B686022C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift in Sources */,
-				333E61A52C8B4F1000FF8823 /* AppViewController.swift in Sources */,
+				333E61A52C8B4F1000FF8823 /* RootViewController.swift in Sources */,
 				33B6860B2C8B592800B4C33D /* ApiClient+Failure.swift in Sources */,
 				33B686062C8B58FE00B4C33D /* ApiClient.swift in Sources */,
 			);

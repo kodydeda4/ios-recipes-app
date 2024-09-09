@@ -3,24 +3,21 @@ import UIKit
 import SwiftUI
 import Combine
 
-final class AppViewController: NavigationController {
-  
-  // MARK: Lifecycle
-  
+final class RootViewController: NavigationController {
   init() {
     super.init(wrapNavigation: NavigationWrapperViewController.init(navigationController:))
     setStack(stack, animated: false)
   }
   
-  // MARK: Private
-  
   private enum DataID: Hashable {
     case index
+    case mealCategory(ApiClient.MealCategory.ID)
     case meal(ApiClient.Meal.ID)
   }
   
   private struct State {
     var destinationMealDetails: ApiClient.MealDetails?
+    var destinationMealCategory: ApiClient.MealCategory?
     var cancellables = Set<AnyCancellable>()
   }
   
@@ -37,10 +34,27 @@ final class AppViewController: NavigationController {
   
   @NavigationModelBuilder private var stack: [NavigationModel] {
     NavigationModel.root(dataID: DataID.index) { [weak self] in
-      MealListViewController(
-        state: .init(mealCategory: .previewValue),
-        didSelectMealID: { id in
-          self?.navigateToMealDetails(id: id)
+      MealCategoryListViewController(
+        state: .init(),
+        didSelectMealCategory: { category in
+          self?.state.destinationMealCategory = category
+        }
+      )
+    }
+    
+    if let value = state.destinationMealCategory {
+      NavigationModel(
+        dataID: DataID.mealCategory(value.id),
+        makeViewController: { [weak self] in
+          MealListViewController(
+            state: .init(mealCategory: value),
+            didSelectMealID: { mealId in
+              self?.navigateToMealDetails(id: mealId)
+            }
+          )
+        },
+        remove: { [weak self] in
+          self?.state.destinationMealDetails = .none
         }
       )
     }
@@ -57,7 +71,7 @@ final class AppViewController: NavigationController {
       )
     }
   }
-  
+        
   private func navigateToMealDetails(id: ApiClient.MealDetails.ID) {
     self.environment.api.fetchMealDetailsById(id)
       .receive(on: self.environment.mainQueue)
@@ -73,10 +87,10 @@ final class AppViewController: NavigationController {
 
 // MARK: - Previews
 
-struct AppViewController_Previews: PreviewProvider {
+struct RootViewController_Previews: PreviewProvider {
   static var previews: some View {
     UIKitPreview {
-      AppViewController()
+      RootViewController()
     }
   }
 }
