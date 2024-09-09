@@ -34,7 +34,7 @@ final class RootViewController: NavigationController {
   
   @NavigationModelBuilder private var stack: [NavigationModel] {
     NavigationModel.root(dataID: DataID.index) { [weak self] in
-      MealCategoryListViewController(
+      MealCategoryCollectionViewController(
         state: .init(),
         didSelectMealCategory: { category in
           self?.state.destinationMealCategory = category
@@ -46,7 +46,7 @@ final class RootViewController: NavigationController {
       NavigationModel(
         dataID: DataID.mealCategory(value.id),
         makeViewController: { [weak self] in
-          MealListViewController(
+          MealCollectionViewController(
             state: .init(mealCategory: value),
             didSelectMealID: { mealId in
               self?.navigateToMealDetails(id: mealId)

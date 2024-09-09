@@ -3,7 +3,7 @@ import UIKit
 import SwiftUI
 import Combine
 
-class MealListViewController: CollectionViewController {
+class MealCollectionViewController: CollectionViewController {
   init(
     state: State,
     didSelectMealID: @escaping (ApiClient.Meal.ID) -> Void = { _ in }
@@ -69,7 +69,7 @@ class MealListViewController: CollectionViewController {
 struct MealListViewController_Previews: PreviewProvider {
   static var previews: some View {
     UIKitPreview {
-      MealListViewController(
+      MealCollectionViewController(
         state: .init(
           mealCategory: .previewValue
         )

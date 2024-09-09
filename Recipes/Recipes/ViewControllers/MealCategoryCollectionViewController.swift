@@ -5,7 +5,7 @@ import Combine
 
 // @DEDA - FlowLayoutViewController for grid?
 
-class MealCategoryListViewController: CollectionViewController {
+class MealCategoryCollectionViewController: CollectionViewController {
   
   init(
     state: State,
@@ -278,7 +278,7 @@ struct MealCategoryListViewController_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
       UIKitPreview {
-        MealCategoryListViewController(state: .init())
+        MealCategoryCollectionViewController(state: .init())
       }
       .navigationTitle("Category")
       .navigationBarTitleDisplayMode(.inline)
