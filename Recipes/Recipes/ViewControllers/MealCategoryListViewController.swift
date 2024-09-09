@@ -58,20 +58,14 @@ class MealCategoryListViewController: CollectionViewController {
         dataID: DataID.row(mealCategory.id),
         content: .init(
           models: [
+            TextRow.barModel(
+              content: .init(title: "\(mealCategory.strCategory)"),
+              style: .small
+            ),
             ImageMarquee.barModel(
               content: .init(imageURL: mealCategory.strCategoryThumb),
               style: .init(height: 150, contentMode: .scaleAspectFill)
             )
-            .didSelect { _ in
-              
-            },
-            TextRow.barModel(
-              content: .init(title: "HI", body: "HELLO"),
-              style: .small
-            )
-            .didSelect { _ in
-              //...
-            },
           ],
           selectedBackgroundColor: .secondarySystemBackground),
         style: .init(card: .init())
@@ -184,8 +178,8 @@ final class CardContainer<ContentView: EpoxyableView>: UIView, EpoxyableView {
   struct CardStyle: Hashable {
     var cornerRadius: CGFloat = 10
     var layoutMargins = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-    var cardBackgroundColor = UIColor.white
-    var borderColor = UIColor.lightGray
+    var cardBackgroundColor = UIColor.secondarySystemBackground
+    var borderColor = UIColor.tertiarySystemBackground
     var borderWidth: CGFloat = 1
     var shadowColor = UIColor.black
     var shadowOffset = CGSize(width: 0, height: 2)
