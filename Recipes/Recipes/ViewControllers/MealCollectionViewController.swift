@@ -11,7 +11,7 @@ class MealCollectionViewController: CollectionViewController {
     self.state = state
     self.didSelectMealID = didSelectMealID
     super.init(layout: UICollectionViewCompositionalLayout.list)
-    self.title = state.mealCategory.strCategory
+    self.title = "\(state.mealCategory.strCategory) Meals"
     self.onAppear()
     setItems(items, animated: false)
   }
