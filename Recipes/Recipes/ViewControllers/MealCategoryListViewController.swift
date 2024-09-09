@@ -3,6 +3,8 @@ import UIKit
 import SwiftUI
 import Combine
 
+// @DEDA - FlowLayoutViewController for grid?
+
 class MealCategoryListViewController: CollectionViewController {
   
   init(
