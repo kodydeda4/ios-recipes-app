@@ -3,9 +3,6 @@ import UIKit
 import SwiftUI
 import Combine
 
-// @DEDA - 12:00 SHows you can use @UIBindable var model with Perception tracking package.
-// https://www.pointfree.co/episodes/ep290-cross-platform-swift-view-paradigms
-
 final class RootViewController: NavigationController {
   init() {
     super.init(wrapNavigation: NavigationWrapperViewController.init(navigationController:))
@@ -38,11 +35,10 @@ final class RootViewController: NavigationController {
   @NavigationModelBuilder private var stack: [NavigationModel] {
     NavigationModel.root(dataID: DataID.index) { [weak self] in
       MealCategoryCollectionViewController(
-        state: .init(
-          didSelectMealCategory: { category in
-            self?.state.destinationMealCategory = category
-          }
-        )
+        state: .init(),
+        didSelectMealCategory: { category in
+          self?.state.destinationMealCategory = category
+        }
       )
     }
     
@@ -51,12 +47,10 @@ final class RootViewController: NavigationController {
         dataID: DataID.mealCategory(value.id),
         makeViewController: { [weak self] in
           MealCollectionViewController(
-            state: .init(
-              mealCategory: value,
-              didSelectMealID: { mealId in
-                self?.navigateToMealDetails(id: mealId)
-              }
-            )
+            state: .init(mealCategory: value),
+            didSelectMealID: { mealId in
+              self?.navigateToMealDetails(id: mealId)
+            }
           )
         },
         remove: { [weak self] in

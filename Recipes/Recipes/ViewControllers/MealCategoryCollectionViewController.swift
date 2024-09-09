@@ -7,13 +7,22 @@ import Combine
 
 class MealCategoryCollectionViewController: CollectionViewController {
   
-  init(state: State) {
+  init(
+    state: State,
+    didSelectMealCategory: @escaping (ApiClient.MealCategory) -> Void = { _ in }
+  ) {
     self.state = state
+    self.didSelectMealCategory = didSelectMealCategory
     super.init(layout: UICollectionViewCompositionalLayout.list)
     self.title = "Meal Categories"
     self.onAppear()
     self.setItems(items, animated: false)
   }
+  
+  var state: State {
+    didSet { setItems(items, animated: true) }
+  }
+  var didSelectMealCategory: (ApiClient.MealCategory) -> Void
   
   private enum DataID: Hashable  {
     case row(ApiClient.MealCategory.ID)
@@ -21,7 +30,6 @@ class MealCategoryCollectionViewController: CollectionViewController {
   
   struct State {
     var mealCategories = [ApiClient.MealCategory]()
-    var didSelectMealCategory: (ApiClient.MealCategory) -> Void = { _ in }
     var cancellables = Set<AnyCancellable>()
   }
   
@@ -30,9 +38,6 @@ class MealCategoryCollectionViewController: CollectionViewController {
     var mainQueue = DispatchQueue.main
   }
   
-  var state: State {
-    didSet { setItems(items, animated: true) }
-  }
   private let environment = Environment()
   
   private func onAppear() {
@@ -65,7 +70,7 @@ class MealCategoryCollectionViewController: CollectionViewController {
           selectedBackgroundColor: .secondarySystemBackground),
         style: .init(card: .init())
       ).didSelect { _ in
-        self.state.didSelectMealCategory(mealCategory)
+        self.didSelectMealCategory(mealCategory)
       }
     }
   }
