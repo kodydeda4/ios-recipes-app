@@ -8,8 +8,10 @@ class MealListViewController: CollectionViewController {
   // MARK: Lifecycle
   
   init(
+    state: State,
     didSelectMealID: @escaping (ApiClient.Meal.ID) -> Void = { _ in }
   ) {
+    self.state = state
     self.didSelectMealID = didSelectMealID
     super.init(layout: UICollectionViewCompositionalLayout.list)
     self.title = "Recipes"
@@ -17,6 +19,9 @@ class MealListViewController: CollectionViewController {
     setItems(items, animated: false)
   }
   
+  var state: State {
+    didSet { setItems(items, animated: true) }
+  }
   var didSelectMealID: (ApiClient.Meal.ID) -> Void
   
   // MARK: Private
@@ -25,8 +30,8 @@ class MealListViewController: CollectionViewController {
     case row(ApiClient.Meal.ID)
   }
   
-  private struct State {
-    let mealCategory = ApiClient.MealCategory.dessert
+  struct State {
+    let mealCategory: ApiClient.MealCategory
     var meals = [ApiClient.Meal]()
     var cancellables = Set<AnyCancellable>()
   }
@@ -36,9 +41,9 @@ class MealListViewController: CollectionViewController {
     var mainQueue = DispatchQueue.main
   }
   
-  private var state = State() {
-    didSet { setItems(items, animated: true) }
-  }
+//  private var state = State() {
+//    didSet { setItems(items, animated: true) }
+//  }
   
   private let environment = Environment()
   
@@ -73,7 +78,11 @@ class MealListViewController: CollectionViewController {
 struct MealListViewController_Previews: PreviewProvider {
   static var previews: some View {
     UIKitPreview {
-      MealListViewController()
+      MealListViewController(
+        state: .init(
+          mealCategory: .previewValue
+        )
+      )
     }
   }
 }

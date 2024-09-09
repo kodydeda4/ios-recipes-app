@@ -38,6 +38,7 @@ final class AppViewController: NavigationController {
   @NavigationModelBuilder private var stack: [NavigationModel] {
     NavigationModel.root(dataID: DataID.index) { [weak self] in
       MealListViewController(
+        state: .init(mealCategory: .previewValue),
         didSelectMealID: { id in
           self?.navigateToMealDetails(id: id)
         }
