@@ -28,7 +28,7 @@ class MealCollectionViewController: CollectionViewController {
     var mainQueue = DispatchQueue.main
   }
   
-  var state: State {
+  private var state: State {
     didSet { setItems(items, animated: true) }
   }
   

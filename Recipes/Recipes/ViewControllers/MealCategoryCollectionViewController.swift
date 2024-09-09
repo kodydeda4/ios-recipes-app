@@ -33,6 +33,7 @@ class MealCategoryCollectionViewController: CollectionViewController {
   var state: State {
     didSet { setItems(items, animated: true) }
   }
+  
   private let environment = Environment()
   
   private func onAppear() {
