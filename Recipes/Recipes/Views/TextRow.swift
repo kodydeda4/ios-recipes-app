@@ -21,7 +21,8 @@ final class TextRow: UIView, EpoxyableView {
   // MARK: Internal
 
   enum Style {
-    case small, large
+    case small
+    case large
   }
 
   struct Content: Equatable {
