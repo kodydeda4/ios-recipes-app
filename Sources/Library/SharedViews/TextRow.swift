@@ -23,7 +23,7 @@ public final class TextRow: UIView, EpoxyableView {
   public struct Style: Hashable {
     let title: UIFont.TextStyle
     let body: UIFont.TextStyle
-    
+
     static var small = Self(title: .headline, body: .body)
     static var large = Self(title: .body, body: .caption1)
   }
@@ -40,18 +40,20 @@ public final class TextRow: UIView, EpoxyableView {
         Label.groupItem(
           dataID: DataID.title,
           content: title,
-          style: .style(with: style.title))
-          .adjustsFontForContentSizeCategory(true)
-          .textColor(UIColor.label)
+          style: .style(with: style.title)
+        )
+        .adjustsFontForContentSizeCategory(true)
+        .textColor(UIColor.label)
       }
       if let body = content.body {
         Label.groupItem(
           dataID: DataID.body,
           content: body,
-          style: .style(with: style.body))
-          .adjustsFontForContentSizeCategory(true)
-          .numberOfLines(0)
-          .textColor(UIColor.secondaryLabel)
+          style: .style(with: style.body)
+        )
+        .adjustsFontForContentSizeCategory(true)
+        .numberOfLines(0)
+        .textColor(UIColor.secondaryLabel)
       }
     }
   }
@@ -80,7 +82,11 @@ extension TextRow: SelectableView {
 
 extension TextRow: HighlightableView {
   public func didHighlight(_ isHighlighted: Bool) {
-    UIView.animate(withDuration: 0.15, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction]) {
+    UIView.animate(
+      withDuration: 0.15,
+      delay: 0,
+      options: [.beginFromCurrentState, .allowUserInteraction]
+    ) {
       self.transform = isHighlighted ? CGAffineTransform(scaleX: 0.95, y: 0.95) : .identity
     }
   }

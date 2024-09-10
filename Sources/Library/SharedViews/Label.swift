@@ -41,11 +41,13 @@ public final class Label: UILabel, EpoxyableView {
 public extension Label.Style {
   static func style(
     with textStyle: UIFont.TextStyle,
-    showBackground: Bool = false)
-  -> Label.Style
+    showBackground: Bool = false
+  )
+    -> Label.Style
   {
     .init(
       font: UIFont.preferredFont(forTextStyle: textStyle),
-      showLabelBackground: showBackground)
+      showLabelBackground: showBackground
+    )
   }
 }

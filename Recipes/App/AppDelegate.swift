@@ -1,5 +1,5 @@
-import UIKit
 import AppFeature
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -8,8 +8,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(
     _: UIApplication,
-    didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?)
-  -> Bool
+    didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
+  )
+    -> Bool
   {
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.rootViewController = AppViewController.shared

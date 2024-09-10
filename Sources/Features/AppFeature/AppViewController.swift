@@ -1,27 +1,27 @@
-import UIKit
-import SwiftUI
-import Combine
-import Epoxy
-import Environment
 import ApiClient
+import Combine
+import Environment
+import Epoxy
 import MealCategoryCollectionFeature
 import MealCollectionFeature
 import MealDetailsFeature
 import SharedViews
+import SwiftUI
+import UIKit
 import UIKitHelpers
 
 public final class AppViewController: NavigationController {
   public static var shared = AppViewController()
   static var previewValue = AppViewController()
-  
+
   struct State {
 //    var path = [NavigationControllerClient.Path]()
     //@DEDA
   }
-  
+
   private var state: State { didSet { setStack(stack, animated: true) } }
   private var environment = Environment.shared
-  
+
   private init() {
     self.state = State()
     super.init(wrapNavigation: NavigationWrapperViewController.init)
@@ -40,12 +40,12 @@ private extension AppViewController {
     case mealCategory(ApiClient.MealCategory.ID)
     case mealDetails(ApiClient.Meal.ID)
   }
-  
+
   @NavigationModelBuilder private var stack: [NavigationModel] {
     NavigationModel.root(dataID: DataID.index) {
       MealCategoryCollectionViewController(state: .init())
     }
-    
+
     // @DEDA
 //    for path in state.path {
 //      switch path {

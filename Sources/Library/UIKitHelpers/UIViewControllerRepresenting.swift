@@ -15,7 +15,7 @@ public struct UIViewControllerRepresenting: UIViewControllerRepresentable {
   }
   
   public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-   // Nothing to do here
+    // Nothing to do here
   }
 }
 

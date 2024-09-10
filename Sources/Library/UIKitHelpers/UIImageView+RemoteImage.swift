@@ -38,7 +38,9 @@ public extension UIImageView {
 
       DispatchQueue.main.async { [weak self] in
         // If the image changed, don't replace it.
-        guard self?.storage?.url == url else { return }
+        guard self?.storage?.url == url else {
+          return
+        }
         self?.image = image
       }
     }

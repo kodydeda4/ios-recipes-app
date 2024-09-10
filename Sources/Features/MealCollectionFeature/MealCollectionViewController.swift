@@ -1,23 +1,23 @@
-import Epoxy
-import UIKit
-import SwiftUI
-import Combine
 import ApiClient
+import Combine
 import Environment
-import UIKitHelpers
+import Epoxy
 import SharedViews
+import SwiftUI
+import UIKit
+import UIKitHelpers
 
 public final class MealCollectionViewController: CollectionViewController {
-  
+
   public struct State {
     let mealCategory: ApiClient.MealCategory
     var meals = [ApiClient.Meal]()
     var cancellables = Set<AnyCancellable>()
   }
-  
+
   private var state: State { didSet { setItems(items, animated: true) } }
   private var environment = Environment.shared
-  
+
   public init(state: State) {
     self.state = state
     super.init(layout: UICollectionViewCompositionalLayout.list)
@@ -37,7 +37,7 @@ public final class MealCollectionViewController: CollectionViewController {
       }
       .store(in: &state.cancellables)
   }
-  
+
   private func didSelect(_ meal: ApiClient.Meal) {
     self.environment.api.fetchMealDetailsById(meal.id)
       .receive(on: self.environment.mainQueue)
@@ -62,11 +62,11 @@ extension MealCollectionViewController {
   private enum DataID: Hashable  {
     case row(ApiClient.Meal.ID)
   }
-  
+
   @ItemModelBuilder private var items: [ItemModeling] {
     []
 //    self.state.meals.map { meal in
-      //@DEDA
+    //@DEDA
 //      TextRow.itemModel(
 //        dataID: DataID.row(meal.id),
 //        content: .init(title: "\(meal.strMeal)"),

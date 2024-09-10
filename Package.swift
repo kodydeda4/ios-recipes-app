@@ -16,7 +16,7 @@ let package = Package(
     .library(name: "MealCategoryCollectionFeature"),
     .library(name: "MealCollectionFeature"),
     .library(name: "MealDetailsFeature"),
-    
+
     // Libraries
     .library(name: "SharedViews"),
     .library(name: "UIKitHelpers"),
@@ -40,25 +40,25 @@ let package = Package(
       "MealDetailsFeature",
     ]),
     .feature("MealCategoryCollectionFeature", dependencies: [
-      
+
     ]),
     .feature("MealCollectionFeature", dependencies: [
-      
+
     ]),
     .feature("MealDetailsFeature", dependencies: [
-      
+
     ]),
 
     // Libraries
-      .library("SharedViews", dependencies: [
-        .product(name: "Epoxy", package: "epoxy-ios"),
-        .product(name: "EpoxyCore", package: "epoxy-ios"),
-        .product(name: "EpoxyCollectionView", package: "epoxy-ios"),
-        .product(name: "EpoxyBars", package: "epoxy-ios"),
-        .product(name: "EpoxyNavigationController", package: "epoxy-ios"),
-        .product(name: "EpoxyPresentations", package: "epoxy-ios"),
-        .product(name: "EpoxyLayoutGroups", package: "epoxy-ios"),
-      ]),
+    .library("SharedViews", dependencies: [
+      .product(name: "Epoxy", package: "epoxy-ios"),
+      .product(name: "EpoxyCore", package: "epoxy-ios"),
+      .product(name: "EpoxyCollectionView", package: "epoxy-ios"),
+      .product(name: "EpoxyBars", package: "epoxy-ios"),
+      .product(name: "EpoxyNavigationController", package: "epoxy-ios"),
+      .product(name: "EpoxyPresentations", package: "epoxy-ios"),
+      .product(name: "EpoxyLayoutGroups", package: "epoxy-ios"),
+    ]),
     .library("UIKitHelpers", dependencies: [
       .product(name: "Epoxy", package: "epoxy-ios"),
       .product(name: "EpoxyCore", package: "epoxy-ios"),
@@ -74,7 +74,7 @@ let package = Package(
 // MARK: - Helpers
 
 extension Product {
-  
+
   /// Create a library with identical name & target.
   static func library(name: String) -> Product {
     .library(name: name, targets: [name])
@@ -82,7 +82,7 @@ extension Product {
 }
 
 extension Target {
-  
+
   /// Create a target with the default path & dependencies for a feature.
   static func feature(_ name: String, dependencies: [Target.Dependency] = []) -> Target {
     .target(
@@ -102,7 +102,7 @@ extension Target {
       path: "Sources/Features/\(name)"
     )
   }
-  
+
   /// Create a target with the default path & dependencies for a dependency.
   static func dependency(_ name: String, dependencies: [Target.Dependency] = []) -> Target {
     .target(
@@ -112,7 +112,7 @@ extension Target {
       path: "Sources/Dependencies/\(name)"
     )
   }
-  
+
   /// Create a target with the default path & dependencies for a library.
   static func library(
     _ name: String,

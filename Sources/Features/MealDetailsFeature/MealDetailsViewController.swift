@@ -1,15 +1,15 @@
-import Epoxy
-import SwiftUI
 import ApiClient
+import Epoxy
 import SharedViews
+import SwiftUI
 import UIKitHelpers
 
 public final class MealDetailsViewController: CollectionViewController {
-  
+
   public struct State {
     let mealDetails: ApiClient.MealDetails
   }
-  
+
   private var state: State {
     didSet {
       setItems(items, animated: false)
@@ -34,7 +34,7 @@ extension MealDetailsViewController {
     case instructionsTitle
     case instructionsSubtitle
   }
-  
+
   @ItemModelBuilder private var items: [ItemModeling] {
     ImageMarquee.itemModel(
       dataID: DataID.headerImage,

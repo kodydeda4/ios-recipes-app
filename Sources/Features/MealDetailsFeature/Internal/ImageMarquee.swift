@@ -1,5 +1,5 @@
-import UIKit
 import Epoxy
+import UIKit
 
 extension MealDetailsViewController {
   final class ImageMarquee: UIView, EpoxyableView {
