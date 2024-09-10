@@ -21,7 +21,6 @@ class MealCategoryCollectionViewController: CollectionViewController {
   
   struct State {
     var mealCategories = [ApiClient.MealCategory]()
-    var didSelectMealCategory: (ApiClient.MealCategory) -> Void = { _ in }
     var cancellables = Set<AnyCancellable>()
   }
   
@@ -66,7 +65,7 @@ class MealCategoryCollectionViewController: CollectionViewController {
           selectedBackgroundColor: .secondarySystemBackground),
         style: .init(card: .init())
       ).didSelect { _ in
-        self.state.didSelectMealCategory(mealCategory)
+        RootViewController.shared.navigateToMealCategory(mealCategory)
       }
     }
   }

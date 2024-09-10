@@ -7,10 +7,12 @@ import Combine
 // https://www.pointfree.co/episodes/ep290-cross-platform-swift-view-paradigms
 
 final class RootViewController: NavigationController {
-  init() {
+  private init() {
     super.init(wrapNavigation: NavigationWrapperViewController.init(navigationController:))
     setStack(stack, animated: false)
   }
+  
+  static var shared = RootViewController()
   
   private enum DataID: Hashable {
     case index
@@ -37,26 +39,15 @@ final class RootViewController: NavigationController {
   
   @NavigationModelBuilder private var stack: [NavigationModel] {
     NavigationModel.root(dataID: DataID.index) { [weak self] in
-      MealCategoryCollectionViewController(
-        state: .init(
-          didSelectMealCategory: { category in
-            self?.state.destinationMealCategory = category
-          }
-        )
-      )
+      MealCategoryCollectionViewController(state: .init())
     }
     
     if let value = state.destinationMealCategory {
       NavigationModel(
         dataID: DataID.mealCategory(value.id),
-        makeViewController: { [weak self] in
+        makeViewController: {
           MealCollectionViewController(
-            state: .init(
-              mealCategory: value,
-              didSelectMealID: { mealId in
-                self?.navigateToMealDetails(id: mealId)
-              }
-            )
+            state: .init(mealCategory: value)
           )
         },
         remove: { [weak self] in
@@ -78,7 +69,7 @@ final class RootViewController: NavigationController {
     }
   }
         
-  private func navigateToMealDetails(id: ApiClient.MealDetails.ID) {
+  func navigateToMealDetails(id: ApiClient.MealDetails.ID) {
     self.environment.api.fetchMealDetailsById(id)
       .receive(on: self.environment.mainQueue)
       .sink { error in
@@ -89,6 +80,10 @@ final class RootViewController: NavigationController {
       }
       .store(in: &self.state.cancellables)
   }
+  
+  func navigateToMealCategory(_ value: ApiClient.MealCategory) {
+    self.state.destinationMealCategory = value
+  }
 }
 
 // MARK: - Previews
@@ -96,7 +91,7 @@ final class RootViewController: NavigationController {
 struct RootViewController_Previews: PreviewProvider {
   static var previews: some View {
     UIKitPreview {
-      RootViewController()
+      RootViewController.shared
     }
   }
 }

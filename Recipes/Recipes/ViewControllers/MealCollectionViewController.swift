@@ -19,7 +19,6 @@ class MealCollectionViewController: CollectionViewController {
   struct State {
     let mealCategory: ApiClient.MealCategory
     var meals = [ApiClient.Meal]()
-    var didSelectMealID: (ApiClient.Meal.ID) -> Void = { _ in }
     var cancellables = Set<AnyCancellable>()
   }
   
@@ -53,8 +52,8 @@ class MealCollectionViewController: CollectionViewController {
         content: .init(title: "\(meal.strMeal)"),
         style: .small
       )
-      .didSelect { [weak self] _ in
-        self?.state.didSelectMealID(meal.id)
+      .didSelect { _ in
+        RootViewController.shared.navigateToMealDetails(id: meal.id)
       }
     }
   }
