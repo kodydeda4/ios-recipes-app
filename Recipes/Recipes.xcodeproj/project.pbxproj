@@ -16,11 +16,6 @@
 		333E61B22C8B54A900FF8823 /* UIImageView+RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61B12C8B54A900FF8823 /* UIImageView+RemoteImage.swift */; };
 		33714FA92C8CC7C000233122 /* UIViewControllerRepresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33714FA82C8CC7C000233122 /* UIViewControllerRepresenting.swift */; };
 		33714FAB2C8CD1DF00233122 /* TextRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33714FAA2C8CD1DF00233122 /* TextRow.swift */; };
-		33741DD12C90DDEF003607E6 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33741DD02C90DDEF003607E6 /* ApiClient.swift */; };
-		33741DD42C90DE03003607E6 /* ApiClient+Failure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33741DD32C90DE03003607E6 /* ApiClient+Failure.swift */; };
-		33741DD62C90DE12003607E6 /* ApiClient+Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33741DD52C90DE12003607E6 /* ApiClient+Meal.swift */; };
-		33741DD82C90DE1A003607E6 /* ApiClient+MealCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33741DD72C90DE1A003607E6 /* ApiClient+MealCategory.swift */; };
-		33741DDA2C90DE26003607E6 /* ApiClient+MealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33741DD92C90DE26003607E6 /* ApiClient+MealDetails.swift */; };
 		33B686022C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B686012C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift */; };
 		33B686062C8B58FE00B4C33D /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B686052C8B58FE00B4C33D /* ApiClient.swift */; };
 		33B686092C8B591900B4C33D /* ApiClient+MealCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B686082C8B591900B4C33D /* ApiClient+MealCategory.swift */; };
@@ -47,11 +42,6 @@
 		333E61B12C8B54A900FF8823 /* UIImageView+RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RemoteImage.swift"; sourceTree = "<group>"; };
 		33714FA82C8CC7C000233122 /* UIViewControllerRepresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresenting.swift; sourceTree = "<group>"; };
 		33714FAA2C8CD1DF00233122 /* TextRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRow.swift; sourceTree = "<group>"; };
-		33741DD02C90DDEF003607E6 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		33741DD32C90DE03003607E6 /* ApiClient+Failure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiClient+Failure.swift"; sourceTree = "<group>"; };
-		33741DD52C90DE12003607E6 /* ApiClient+Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiClient+Meal.swift"; sourceTree = "<group>"; };
-		33741DD72C90DE1A003607E6 /* ApiClient+MealCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiClient+MealCategory.swift"; sourceTree = "<group>"; };
-		33741DD92C90DE26003607E6 /* ApiClient+MealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiClient+MealDetails.swift"; sourceTree = "<group>"; };
 		33B686012C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCompositionalLayout+List.swift"; sourceTree = "<group>"; };
 		33B686052C8B58FE00B4C33D /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		33B686082C8B591900B4C33D /* ApiClient+MealCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiClient+MealCategory.swift"; sourceTree = "<group>"; };
@@ -82,7 +72,7 @@
 		331B7D812C8B43A70033DFA9 = {
 			isa = PBXGroup;
 			children = (
-				331B7D8C2C8B43A70033DFA9 /* Recipes */,
+				331B7D8C2C8B43A70033DFA9 /* App */,
 				331B7D8B2C8B43A70033DFA9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,20 +85,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		331B7D8C2C8B43A70033DFA9 /* Recipes */ = {
-			isa = PBXGroup;
-			children = (
-				331B7DA12C8B43F10033DFA9 /* App */,
-				331B7DA22C8B43FE0033DFA9 /* Assets */,
-				33C94DE82C90D52E004C452D /* Sources */,
-			);
-			path = Recipes;
-			sourceTree = "<group>";
-		};
-		331B7DA12C8B43F10033DFA9 /* App */ = {
+		331B7D8C2C8B43A70033DFA9 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				331B7D8D2C8B43A70033DFA9 /* AppDelegate.swift */,
+				331B7DA22C8B43FE0033DFA9 /* Assets */,
+				33C94DE82C90D52E004C452D /* ApplicationSources */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -141,34 +123,6 @@
 				33714FAA2C8CD1DF00233122 /* TextRow.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		33741DCE2C90DDC3003607E6 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				33741DCF2C90DDC7003607E6 /* ApiClient */,
-			);
-			path = Dependencies;
-			sourceTree = "<group>";
-		};
-		33741DCF2C90DDC7003607E6 /* ApiClient */ = {
-			isa = PBXGroup;
-			children = (
-				33741DD22C90DDFC003607E6 /* Models */,
-				33741DD02C90DDEF003607E6 /* ApiClient.swift */,
-			);
-			path = ApiClient;
-			sourceTree = "<group>";
-		};
-		33741DD22C90DDFC003607E6 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				33741DD32C90DE03003607E6 /* ApiClient+Failure.swift */,
-				33741DD52C90DE12003607E6 /* ApiClient+Meal.swift */,
-				33741DD72C90DE1A003607E6 /* ApiClient+MealCategory.swift */,
-				33741DD92C90DE26003607E6 /* ApiClient+MealDetails.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		33B686032C8B58E300B4C33D /* Dependencies */ = {
@@ -261,15 +215,14 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
-		33C94DE82C90D52E004C452D /* Sources */ = {
+		33C94DE82C90D52E004C452D /* ApplicationSources */ = {
 			isa = PBXGroup;
 			children = (
-				33741DCE2C90DDC3003607E6 /* Dependencies */,
 				33B686032C8B58E300B4C33D /* Dependencies */,
 				33C94DD72C90D32A004C452D /* Features */,
 				33C94DE72C90D523004C452D /* Library */,
 			);
-			path = Sources;
+			path = ApplicationSources;
 			sourceTree = "<group>";
 		};
 		33C94DE92C90D5D0004C452D /* Helpers */ = {
@@ -363,12 +316,10 @@
 				33C94DE32C90D3DF004C452D /* MealCategoryCollectionViewController.swift in Sources */,
 				33C94DE62C90D3FD004C452D /* MealCollectionViewController.swift in Sources */,
 				33B6860F2C8B594300B4C33D /* ApiClient+MealDetails.swift in Sources */,
-				33741DD42C90DE03003607E6 /* ApiClient+Failure.swift in Sources */,
 				33714FA92C8CC7C000233122 /* UIViewControllerRepresenting.swift in Sources */,
 				33C94DEB2C90D5D5004C452D /* CardContainer.swift in Sources */,
 				33714FAB2C8CD1DF00233122 /* TextRow.swift in Sources */,
 				33B686092C8B591900B4C33D /* ApiClient+MealCategory.swift in Sources */,
-				33741DD62C90DE12003607E6 /* ApiClient+Meal.swift in Sources */,
 				331B7D8E2C8B43A70033DFA9 /* AppDelegate.swift in Sources */,
 				333E61A92C8B53D200FF8823 /* Label.swift in Sources */,
 				333E61B22C8B54A900FF8823 /* UIImageView+RemoteImage.swift in Sources */,
@@ -376,10 +327,7 @@
 				33C94DE02C90D3AD004C452D /* NavigationWrapperViewController.swift in Sources */,
 				33C94DED2C90D607004C452D /* ImageMarquee.swift in Sources */,
 				33B6860B2C8B592800B4C33D /* ApiClient+Failure.swift in Sources */,
-				33741DDA2C90DE26003607E6 /* ApiClient+MealDetails.swift in Sources */,
-				33741DD82C90DE1A003607E6 /* ApiClient+MealCategory.swift in Sources */,
 				33C94DDA2C90D33C004C452D /* MealDetailsViewController.swift in Sources */,
-				33741DD12C90DDEF003607E6 /* ApiClient.swift in Sources */,
 				33B686062C8B58FE00B4C33D /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,7 +482,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ME637H7ZM9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Recipes/Assets/Info.plist;
+				INFOPLIST_FILE = App/Assets/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -563,7 +511,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ME637H7ZM9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Recipes/Assets/Info.plist;
+				INFOPLIST_FILE = App/Assets/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
