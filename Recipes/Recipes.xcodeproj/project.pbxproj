@@ -22,8 +22,8 @@
 		33741DE52C90DF19003607E6 /* ApiClient+MealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33741DE42C90DF19003607E6 /* ApiClient+MealDetails.swift */; };
 		33741DE72C90DF34003607E6 /* ApiClient+MealCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33741DE62C90DF34003607E6 /* ApiClient+MealCategory.swift */; };
 		33B686022C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B686012C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift */; };
-		33BAB1B02C90E554008DD3EB /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BAB1AF2C90E554008DD3EB /* Environment.swift */; };
-		33BAB1B32C90E568008DD3EB /* NavigationStackClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BAB1B22C90E568008DD3EB /* NavigationStackClient.swift */; };
+		33BAB1B02C90E554008DD3EB /* _Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BAB1AF2C90E554008DD3EB /* _Environment.swift */; };
+		33BAB1B32C90E568008DD3EB /* NavigationControllerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BAB1B22C90E568008DD3EB /* NavigationControllerClient.swift */; };
 		33C94DDA2C90D33C004C452D /* MealDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C94DD92C90D33C004C452D /* MealDetailsViewController.swift */; };
 		33C94DDD2C90D359004C452D /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C94DDC2C90D359004C452D /* AppViewController.swift */; };
 		33C94DE02C90D3AD004C452D /* NavigationWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C94DDF2C90D3AD004C452D /* NavigationWrapperViewController.swift */; };
@@ -51,8 +51,8 @@
 		33741DE42C90DF19003607E6 /* ApiClient+MealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ApiClient+MealDetails.swift"; path = "../../../../../../../../../../Documents/ApiClient+MealDetails.swift"; sourceTree = "<group>"; };
 		33741DE62C90DF34003607E6 /* ApiClient+MealCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ApiClient+MealCategory.swift"; path = "../../../../../../../../../../Documents/ApiClient+MealCategory.swift"; sourceTree = "<group>"; };
 		33B686012C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCompositionalLayout+List.swift"; sourceTree = "<group>"; };
-		33BAB1AF2C90E554008DD3EB /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		33BAB1B22C90E568008DD3EB /* NavigationStackClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackClient.swift; sourceTree = "<group>"; };
+		33BAB1AF2C90E554008DD3EB /* _Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _Environment.swift; sourceTree = "<group>"; };
+		33BAB1B22C90E568008DD3EB /* NavigationControllerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerClient.swift; sourceTree = "<group>"; };
 		33C94DD92C90D33C004C452D /* MealDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsViewController.swift; sourceTree = "<group>"; };
 		33C94DDC2C90D359004C452D /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		33C94DDF2C90D3AD004C452D /* NavigationWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWrapperViewController.swift; sourceTree = "<group>"; };
@@ -134,9 +134,9 @@
 		33741DDB2C90DED9003607E6 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				33BAB1B12C90E563008DD3EB /* NavigationStackClient */,
+				33BAB1AF2C90E554008DD3EB /* _Environment.swift */,
 				33741DDC2C90DEE7003607E6 /* ApiClient */,
-				33BAB1AF2C90E554008DD3EB /* Environment.swift */,
+				33BAB1B12C90E563008DD3EB /* NavigationControllerClient */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
@@ -161,12 +161,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		33BAB1B12C90E563008DD3EB /* NavigationStackClient */ = {
+		33BAB1B12C90E563008DD3EB /* NavigationControllerClient */ = {
 			isa = PBXGroup;
 			children = (
-				33BAB1B22C90E568008DD3EB /* NavigationStackClient.swift */,
+				33BAB1B22C90E568008DD3EB /* NavigationControllerClient.swift */,
 			);
-			path = NavigationStackClient;
+			path = NavigationControllerClient;
 			sourceTree = "<group>";
 		};
 		33C94DD72C90D32A004C452D /* Features */ = {
@@ -345,14 +345,14 @@
 				33741DE32C90DF08003607E6 /* ApiClient+Meal.swift in Sources */,
 				33741DE52C90DF19003607E6 /* ApiClient+MealDetails.swift in Sources */,
 				33714FAB2C8CD1DF00233122 /* TextRow.swift in Sources */,
-				33BAB1B02C90E554008DD3EB /* Environment.swift in Sources */,
+				33BAB1B02C90E554008DD3EB /* _Environment.swift in Sources */,
 				33741DE12C90DEFB003607E6 /* ApiClient+Failures.swift in Sources */,
 				331B7D8E2C8B43A70033DFA9 /* AppDelegate.swift in Sources */,
 				33741DDE2C90DEED003607E6 /* ApiClient.swift in Sources */,
 				333E61A92C8B53D200FF8823 /* Label.swift in Sources */,
 				333E61B22C8B54A900FF8823 /* UIImageView+RemoteImage.swift in Sources */,
 				33B686022C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift in Sources */,
-				33BAB1B32C90E568008DD3EB /* NavigationStackClient.swift in Sources */,
+				33BAB1B32C90E568008DD3EB /* NavigationControllerClient.swift in Sources */,
 				33C94DE02C90D3AD004C452D /* NavigationWrapperViewController.swift in Sources */,
 				33C94DED2C90D607004C452D /* MealCategoryCollectionViewController+ImageMarquee.swift in Sources */,
 				33FFB3E92C90E1F3005ECF57 /* MealDetailsViewController+ImageMarquee.swift in Sources */,

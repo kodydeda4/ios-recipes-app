@@ -7,15 +7,15 @@ final class AppViewController: NavigationController {
   static var shared = AppViewController()
   static var previewValue = AppViewController()
   
-  struct State {
-    var path = [NavigationStackClient.Path]()
+  private struct State {
+    var path = [NavigationControllerClient.Path]()
   }
   
   private var state: State { didSet { setStack(stack, animated: true) } }
   private var environment = Environment.shared
   
-  private init(state: State = .init()) {
-    self.state = state
+  private init() {
+    self.state = State()
     super.init(wrapNavigation: NavigationWrapperViewController.init)
     self.environment.navigationStack = .init(
       push: { self.state.path.append($0)  },
@@ -66,7 +66,7 @@ extension AppViewController {
 
 // MARK: - SwiftUI Previews
 
-struct AppViewController_Previews: PreviewProvider {
+struct AppViewControler_Previews: PreviewProvider {
   static var previews: some View {
     UIViewControllerRepresenting {
       AppViewController.previewValue
