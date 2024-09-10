@@ -1,7 +1,10 @@
 # Recipes
 
-<img width="50" src="https://github.com/kodydeda4/swiftui-resume-builder-ai/assets/45678211/6eeb1ca6-4d7f-4de4-91d9-409e733f7bf2"> <img width="50" src="https://airbnb.io/img/projects/epoxy-ios.png"> 
+Recipes is a native iOS app that allows users to browse recipes using `https://themealdb.com/api.php`.  
 
-Recipes is a native iOS app built with [Epoxy-iOS](https://github.com/airbnb/epoxy-ios) & [Combine](https://developer.apple.com/documentation/combine) that allows users to browse recipes from a free API https://themealdb.com.
+<img width="750" alt="Group 2" src="https://github.com/user-attachments/assets/be52dda7-e7c2-42e1-8583-6a29fcedf4c2">
 
+## About this demo
+
+This demo was created using [Epoxy-iOS](https://github.com/airbnb/epoxy-ios) & [Combine](https://developer.apple.com/documentation/combine) frameworks. The code is structured as an SPM package to avoid circular dependencies and keep compilation times lean. The app is generally split into Clients (dependencies), Features (view-controllers), and Libraries.
 
