@@ -28,7 +28,8 @@
 		33C94DE32C90D3DF004C452D /* MealCategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C94DE22C90D3DF004C452D /* MealCategoryCollectionViewController.swift */; };
 		33C94DE62C90D3FD004C452D /* MealCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C94DE52C90D3FD004C452D /* MealCollectionViewController.swift */; };
 		33C94DEB2C90D5D5004C452D /* CardContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C94DEA2C90D5D5004C452D /* CardContainer.swift */; };
-		33C94DED2C90D607004C452D /* ImageMarquee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C94DEC2C90D607004C452D /* ImageMarquee.swift */; };
+		33C94DED2C90D607004C452D /* MealCategoryCollectionViewController+ImageMarquee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C94DEC2C90D607004C452D /* MealCategoryCollectionViewController+ImageMarquee.swift */; };
+		33FFB3E92C90E1F3005ECF57 /* MealDetailsViewController+ImageMarquee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FFB3E82C90E1F3005ECF57 /* MealDetailsViewController+ImageMarquee.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +55,8 @@
 		33C94DE22C90D3DF004C452D /* MealCategoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCategoryCollectionViewController.swift; sourceTree = "<group>"; };
 		33C94DE52C90D3FD004C452D /* MealCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCollectionViewController.swift; sourceTree = "<group>"; };
 		33C94DEA2C90D5D5004C452D /* CardContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContainer.swift; sourceTree = "<group>"; };
-		33C94DEC2C90D607004C452D /* ImageMarquee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMarquee.swift; sourceTree = "<group>"; };
+		33C94DEC2C90D607004C452D /* MealCategoryCollectionViewController+ImageMarquee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MealCategoryCollectionViewController+ImageMarquee.swift"; sourceTree = "<group>"; };
+		33FFB3E82C90E1F3005ECF57 /* MealDetailsViewController+ImageMarquee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MealDetailsViewController+ImageMarquee.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 		33C94DD82C90D331004C452D /* MealDetails */ = {
 			isa = PBXGroup;
 			children = (
+				33FFB3E72C90E1ED005ECF57 /* Helpers */,
 				33C94DD92C90D33C004C452D /* MealDetailsViewController.swift */,
 			);
 			path = MealDetails;
@@ -229,7 +232,15 @@
 			isa = PBXGroup;
 			children = (
 				33C94DEA2C90D5D5004C452D /* CardContainer.swift */,
-				33C94DEC2C90D607004C452D /* ImageMarquee.swift */,
+				33C94DEC2C90D607004C452D /* MealCategoryCollectionViewController+ImageMarquee.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		33FFB3E72C90E1ED005ECF57 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				33FFB3E82C90E1F3005ECF57 /* MealDetailsViewController+ImageMarquee.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -327,7 +338,8 @@
 				333E61B22C8B54A900FF8823 /* UIImageView+RemoteImage.swift in Sources */,
 				33B686022C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift in Sources */,
 				33C94DE02C90D3AD004C452D /* NavigationWrapperViewController.swift in Sources */,
-				33C94DED2C90D607004C452D /* ImageMarquee.swift in Sources */,
+				33C94DED2C90D607004C452D /* MealCategoryCollectionViewController+ImageMarquee.swift in Sources */,
+				33FFB3E92C90E1F3005ECF57 /* MealDetailsViewController+ImageMarquee.swift in Sources */,
 				33C94DDA2C90D33C004C452D /* MealDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

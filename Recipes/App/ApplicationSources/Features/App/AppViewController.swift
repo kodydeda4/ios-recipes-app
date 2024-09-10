@@ -6,11 +6,6 @@ import Epoxy
 final class AppViewController: NavigationController {
   static var shared = AppViewController()
   static var previewValue = AppViewController()
-
-  private init() {
-    super.init(wrapNavigation: NavigationWrapperViewController.init(navigationController:))
-    setStack(stack, animated: false)
-  }
   
   struct State {
     var path = [Path]()
@@ -26,6 +21,11 @@ final class AppViewController: NavigationController {
     didSet { setStack(stack, animated: true) }
   }
   
+  private init() {
+    super.init(wrapNavigation: NavigationWrapperViewController.init(navigationController:))
+    setStack(stack, animated: false)
+  }
+
   public func push(_ value: State.Path) {
     self.state.path.append(value)
   }
@@ -33,6 +33,7 @@ final class AppViewController: NavigationController {
   public func pop() {
     self.state.path.removeLast()
   }
+
 }
 
 // MARK: - View

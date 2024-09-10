@@ -4,13 +4,6 @@ import SwiftUI
 import Combine
 
 class MealCollectionViewController: CollectionViewController {
-  init(state: State) {
-    self.state = state
-    super.init(layout: UICollectionViewCompositionalLayout.list)
-    self.title = "\(state.mealCategory.strCategory) Meals"
-    self.onAppear()
-    setItems(items, animated: false)
-  }
   
   struct State {
     let mealCategory: ApiClient.MealCategory
@@ -29,8 +22,15 @@ class MealCollectionViewController: CollectionViewController {
   
   private let environment = Environment()
   
-  
-  private func onAppear() {
+  init(state: State) {
+    self.state = state
+    super.init(layout: UICollectionViewCompositionalLayout.list)
+    self.title = "\(state.mealCategory.strCategory) Meals"
+    setItems(items, animated: false)
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
     self.environment.api.fetchAllMeals(self.state.mealCategory)
       .receive(on: self.environment.mainQueue)
       .sink { error in
@@ -41,6 +41,22 @@ class MealCollectionViewController: CollectionViewController {
       }
       .store(in: &state.cancellables)
   }
+  
+  private func didSelect(_ meal: ApiClient.Meal) {
+    self.environment.api.fetchMealDetailsById(meal.id)
+      .receive(on: self.environment.mainQueue)
+      .sink { error in
+        print(error)
+      } receiveValue: { value in
+        print(value)
+        if let mealDetails = value.last {
+          AppViewController.shared.push(.mealDetails(
+            .init(mealDetails: mealDetails))
+          )
+        }
+      }
+      .store(in: &self.state.cancellables)
+  }
 }
 
 // MARK: - View
@@ -49,7 +65,7 @@ extension MealCollectionViewController {
   private enum DataID: Hashable  {
     case row(ApiClient.Meal.ID)
   }
-
+  
   @ItemModelBuilder private var items: [ItemModeling] {
     self.state.meals.map { meal in
       TextRow.itemModel(
@@ -58,21 +74,7 @@ extension MealCollectionViewController {
         style: .small
       )
       .didSelect { [weak self] _ in
-        guard let self else { return }
-        self.environment.api.fetchMealDetailsById(meal.id)
-          .receive(on: self.environment.mainQueue)
-          .sink { error in
-            print(error)
-          } receiveValue: { value in
-            print(value)
-            
-            if let mealDetails = value.last {
-              AppViewController.shared.push(.mealDetails(
-                .init(mealDetails: mealDetails))
-              )
-            }
-          }
-          .store(in: &self.state.cancellables)
+        self?.didSelect(meal)
       }
     }
   }

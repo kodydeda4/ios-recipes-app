@@ -3,18 +3,7 @@ import UIKit
 import SwiftUI
 import Combine
 
-// @DEDA - FlowLayoutViewController for grid?
-
 class MealCategoryCollectionViewController: CollectionViewController {
-  
-  init(state: State) {
-    self.state = state
-    super.init(layout: UICollectionViewCompositionalLayout.list)
-    self.title = "Meal Categories"
-    self.onAppear()
-    self.setItems(items, animated: false)
-  }
-  
   struct State {
     var mealCategories = [ApiClient.MealCategory]()
     var cancellables = Set<AnyCancellable>()
@@ -31,7 +20,15 @@ class MealCategoryCollectionViewController: CollectionViewController {
   
   private let environment = Environment()
   
-  private func onAppear() {
+  init(state: State) {
+    self.state = state
+    super.init(layout: UICollectionViewCompositionalLayout.list)
+    self.title = "Meal Categories"
+    self.setItems(items, animated: false)
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     self.environment.api.fetchAllMealCategories()
       .receive(on: self.environment.mainQueue)
       .sink { error in
@@ -43,7 +40,7 @@ class MealCategoryCollectionViewController: CollectionViewController {
       .store(in: &state.cancellables)
   }
 }
-
+  
 // MARK: - View
 
 extension MealCategoryCollectionViewController {
@@ -78,7 +75,7 @@ extension MealCategoryCollectionViewController {
   }
 }
 
-// MARK: - Previews
+// MARK: - SwiftUI Previews
 
 struct MealCategoryListViewController_Previews: PreviewProvider {
   static var previews: some View {
