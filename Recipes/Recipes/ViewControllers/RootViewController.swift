@@ -39,17 +39,17 @@ final class RootViewController: NavigationController {
     for path in state.path {
       switch path {
         
-      case let .mealCategory(path):
+      case let .mealCategory(state):
         NavigationModel(
-          dataID: DataID.mealCategory(path.mealCategory.id),
-          makeViewController: { MealCollectionViewController(state: path) },
+          dataID: DataID.mealCategory(state.mealCategory.id),
+          makeViewController: { MealCollectionViewController(state: state) },
           remove: { [weak self] in self?.pop() }
         )
         
-      case let .mealDetails(path):
+      case let .mealDetails(state):
         NavigationModel(
-          dataID: DataID.mealDetails(path.mealDetails.id),
-          makeViewController: { MealDetailsViewController(state: path) },
+          dataID: DataID.mealDetails(state.mealDetails.id),
+          makeViewController: { MealDetailsViewController(state: state) },
           remove: { [weak self] in self?.pop() }
         )
       }
