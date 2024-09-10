@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 
+/// A view that represents a UIKit view controller.
 struct UIViewControllerRepresenting: UIViewControllerRepresentable {
   
   var viewControllerBuilder: () -> UIViewController
