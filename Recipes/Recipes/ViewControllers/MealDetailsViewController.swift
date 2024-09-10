@@ -108,7 +108,7 @@ private final class ImageMarquee: UIView, EpoxyableView {
 struct MealDetailsViewController_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      UIKitPreview {
+      UIViewControllerRepresenting {
         MealDetailsViewController(mealDetails: .previewValue)
       }
     }

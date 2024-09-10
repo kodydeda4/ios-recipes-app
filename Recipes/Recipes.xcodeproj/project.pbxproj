@@ -18,7 +18,7 @@
 		333E61AE2C8B545500FF8823 /* NavigationWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61AD2C8B545500FF8823 /* NavigationWrapperViewController.swift */; };
 		333E61B22C8B54A900FF8823 /* UIImageView+RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333E61B12C8B54A900FF8823 /* UIImageView+RemoteImage.swift */; };
 		3351F5A82C8B6CF900978094 /* MealCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3351F5A72C8B6CF900978094 /* MealCollectionViewController.swift */; };
-		33714FA92C8CC7C000233122 /* UIKitPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33714FA82C8CC7C000233122 /* UIKitPreview.swift */; };
+		33714FA92C8CC7C000233122 /* UIViewControllerRepresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33714FA82C8CC7C000233122 /* UIViewControllerRepresenting.swift */; };
 		33714FAB2C8CD1DF00233122 /* TextRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33714FAA2C8CD1DF00233122 /* TextRow.swift */; };
 		338D25E02C8F707300D6D869 /* MealCategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D25DF2C8F707300D6D869 /* MealCategoryCollectionViewController.swift */; };
 		33B686022C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B686012C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift */; };
@@ -42,7 +42,7 @@
 		333E61AD2C8B545500FF8823 /* NavigationWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWrapperViewController.swift; sourceTree = "<group>"; };
 		333E61B12C8B54A900FF8823 /* UIImageView+RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+RemoteImage.swift"; sourceTree = "<group>"; };
 		3351F5A72C8B6CF900978094 /* MealCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCollectionViewController.swift; sourceTree = "<group>"; };
-		33714FA82C8CC7C000233122 /* UIKitPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitPreview.swift; sourceTree = "<group>"; };
+		33714FA82C8CC7C000233122 /* UIViewControllerRepresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerRepresenting.swift; sourceTree = "<group>"; };
 		33714FAA2C8CD1DF00233122 /* TextRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRow.swift; sourceTree = "<group>"; };
 		338D25DF2C8F707300D6D869 /* MealCategoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCategoryCollectionViewController.swift; sourceTree = "<group>"; };
 		33B686012C8B567F00B4C33D /* UICollectionViewCompositionalLayout+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCompositionalLayout+List.swift"; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		33714FA72C8CC7AD00233122 /* UIKit+ */ = {
 			isa = PBXGroup;
 			children = (
-				33714FA82C8CC7C000233122 /* UIKitPreview.swift */,
+				33714FA82C8CC7C000233122 /* UIViewControllerRepresenting.swift */,
 			);
 			path = "UIKit+";
 			sourceTree = "<group>";
@@ -293,7 +293,7 @@
 				333E61AE2C8B545500FF8823 /* NavigationWrapperViewController.swift in Sources */,
 				3351F5A82C8B6CF900978094 /* MealCollectionViewController.swift in Sources */,
 				33B6860F2C8B594300B4C33D /* ApiClient+MealDetails.swift in Sources */,
-				33714FA92C8CC7C000233122 /* UIKitPreview.swift in Sources */,
+				33714FA92C8CC7C000233122 /* UIViewControllerRepresenting.swift in Sources */,
 				33714FAB2C8CD1DF00233122 /* TextRow.swift in Sources */,
 				33B686092C8B591900B4C33D /* ApiClient+MealCategory.swift in Sources */,
 				338D25E02C8F707300D6D869 /* MealCategoryCollectionViewController.swift in Sources */,

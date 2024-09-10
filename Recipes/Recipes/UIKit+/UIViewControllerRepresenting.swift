@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct UIKitPreview: UIViewControllerRepresentable {
+struct UIViewControllerRepresenting: UIViewControllerRepresentable {
   
   var viewControllerBuilder: () -> UIViewController
   

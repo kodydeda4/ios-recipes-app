@@ -63,7 +63,7 @@ class MealCollectionViewController: CollectionViewController {
 
 struct MealListViewController_Previews: PreviewProvider {
   static var previews: some View {
-    UIKitPreview {
+    UIViewControllerRepresenting {
       MealCollectionViewController(
         state: .init(
           mealCategory: .previewValue

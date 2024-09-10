@@ -90,7 +90,7 @@ final class RootViewController: NavigationController {
 
 struct RootViewController_Previews: PreviewProvider {
   static var previews: some View {
-    UIKitPreview {
+    UIViewControllerRepresenting {
       RootViewController.shared
     }
   }

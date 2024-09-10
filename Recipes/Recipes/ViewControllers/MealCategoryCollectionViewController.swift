@@ -273,7 +273,7 @@ extension CGSize: Hashable {
 struct MealCategoryListViewController_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      UIKitPreview {
+      UIViewControllerRepresenting {
         MealCategoryCollectionViewController(state: .init())
       }
       .navigationTitle("Category")
