@@ -2,10 +2,14 @@ import Epoxy
 import UIKit
 import SwiftUI
 import Combine
+import ApiClient
+import Environment
+import UIKitHelpers
+import SharedViews
 
-class MealCollectionViewController: CollectionViewController {
+public final class MealCollectionViewController: CollectionViewController {
   
-  struct State {
+  public struct State {
     let mealCategory: ApiClient.MealCategory
     var meals = [ApiClient.Meal]()
     var cancellables = Set<AnyCancellable>()
@@ -14,14 +18,14 @@ class MealCollectionViewController: CollectionViewController {
   private var state: State { didSet { setItems(items, animated: true) } }
   private var environment = Environment.shared
   
-  init(state: State) {
+  public init(state: State) {
     self.state = state
     super.init(layout: UICollectionViewCompositionalLayout.list)
     self.title = "\(state.mealCategory.strCategory) Meals"
     setItems(items, animated: false)
   }
 
-  override func viewDidLoad() {
+  public override func viewDidLoad() {
     super.viewDidLoad()
     self.environment.api.fetchAllMeals(self.state.mealCategory)
       .receive(on: self.environment.mainQueue)
@@ -41,11 +45,12 @@ class MealCollectionViewController: CollectionViewController {
         print(error)
       } receiveValue: { [weak self] value in
         print(value)
-        if let mealDetails = value.last {
-          self?.environment.navigationStack.push(.mealDetails(
-            .init(mealDetails: mealDetails))
-          )
-        }
+        //@DEDA
+//        if let mealDetails = value.last {
+//          self?.environment.navigationStack.push(.mealDetails(
+//            .init(mealDetails: mealDetails))
+//          )
+//        }
       }
       .store(in: &self.state.cancellables)
   }
@@ -59,16 +64,18 @@ extension MealCollectionViewController {
   }
   
   @ItemModelBuilder private var items: [ItemModeling] {
-    self.state.meals.map { meal in
-      TextRow.itemModel(
-        dataID: DataID.row(meal.id),
-        content: .init(title: "\(meal.strMeal)"),
-        style: .small
-      )
-      .didSelect { [weak self] _ in
-        self?.didSelect(meal)
-      }
-    }
+    []
+//    self.state.meals.map { meal in
+      //@DEDA
+//      TextRow.itemModel(
+//        dataID: DataID.row(meal.id),
+//        content: .init(title: "\(meal.strMeal)"),
+//        style: .small
+//      )
+//      .didSelect { [weak self] _ in
+//        self?.didSelect(meal)
+//      }
+//    }
   }
 }
 

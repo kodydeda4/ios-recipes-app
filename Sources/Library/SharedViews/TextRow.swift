@@ -1,11 +1,11 @@
 import Epoxy
 import UIKit
 
-final class TextRow: UIView, EpoxyableView {
+public final class TextRow: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  init(style: Style) {
+  public init(style: Style) {
     self.style = style
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
@@ -20,7 +20,7 @@ final class TextRow: UIView, EpoxyableView {
 
   // MARK: Internal
 
-  struct Style: Hashable {
+  public struct Style: Hashable {
     let title: UIFont.TextStyle
     let body: UIFont.TextStyle
     
@@ -28,12 +28,12 @@ final class TextRow: UIView, EpoxyableView {
     static var large = Self(title: .body, body: .caption1)
   }
 
-  struct Content: Equatable {
+  public struct Content: Equatable {
     var title: String?
     var body: String?
   }
 
-  func setContent(_ content: Content, animated _: Bool) {
+  public func setContent(_ content: Content, animated _: Bool) {
 
     group.setItems {
       if let title = content.title {
@@ -70,7 +70,7 @@ final class TextRow: UIView, EpoxyableView {
 // MARK: SelectableView
 
 extension TextRow: SelectableView {
-  func didSelect() {
+  public func didSelect() {
     // Handle this row being selected, e.g. to trigger haptics:
     UISelectionFeedbackGenerator().selectionChanged()
   }
@@ -79,7 +79,7 @@ extension TextRow: SelectableView {
 // MARK: HighlightableView
 
 extension TextRow: HighlightableView {
-  func didHighlight(_ isHighlighted: Bool) {
+  public func didHighlight(_ isHighlighted: Bool) {
     UIView.animate(withDuration: 0.15, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction]) {
       self.transform = isHighlighted ? CGAffineTransform(scaleX: 0.95, y: 0.95) : .identity
     }
@@ -89,7 +89,7 @@ extension TextRow: HighlightableView {
 // MARK: DisplayRespondingView
 
 extension TextRow: DisplayRespondingView {
-  func didDisplay(_: Bool) {
+  public func didDisplay(_: Bool) {
     // Handle this row being displayed.
   }
 }

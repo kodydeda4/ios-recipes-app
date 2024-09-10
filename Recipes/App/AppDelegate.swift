@@ -1,4 +1,5 @@
 import UIKit
+import AppFeature
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

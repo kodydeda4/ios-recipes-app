@@ -1,9 +1,12 @@
 import Epoxy
 import SwiftUI
+import ApiClient
+import SharedViews
+import UIKitHelpers
 
-final class MealDetailsViewController: CollectionViewController {
+public final class MealDetailsViewController: CollectionViewController {
   
-  struct State {
+  public struct State {
     let mealDetails: ApiClient.MealDetails
   }
   
@@ -38,28 +41,29 @@ extension MealDetailsViewController {
       content: .init(imageURL: URL(string: "\(state.mealDetails.strMealThumb)")!),
       style: .init(height: 250, contentMode: .scaleAspectFill)
     )
-    TextRow.itemModel(
-      dataID: DataID.instructionsTitle,
-      content: .init(title: "🛒 Ingredients"),
-      style: .large
-    )
-    TextRow.itemModel(
-      dataID: DataID.ingredientsSubtitle,
-      content: .init(title: "\(state.mealDetails.strInstructions)"),
-      style: .small
-    )
-    TextRow.itemModel(
-      dataID: DataID.instructionsTitle,
-      content: .init(title: "📖 Instructions"),
-      style: .large
-    )
-    state.mealDetails.ingredientMeasures.compactMap { value in
-      TextRow.itemModel(
-        dataID: DataID.instructionsSubtitle,
-        content: .init(title: value.strMeasure + " " + value.strIngredient),
-        style: .small
-      )
-    }
+    //@DEDA
+//    TextRow.itemModel(
+//      dataID: DataID.instructionsTitle,
+//      content: .init(title: "🛒 Ingredients"),
+//      style: .large
+//    )
+//    TextRow.itemModel(
+//      dataID: DataID.ingredientsSubtitle,
+//      content: .init(title: "\(state.mealDetails.strInstructions)"),
+//      style: .small
+//    )
+//    TextRow.itemModel(
+//      dataID: DataID.instructionsTitle,
+//      content: .init(title: "📖 Instructions"),
+//      style: .large
+//    )
+//    state.mealDetails.ingredientMeasures.compactMap { value in
+//      TextRow.itemModel(
+//        dataID: DataID.instructionsSubtitle,
+//        content: .init(title: value.strMeasure + " " + value.strIngredient),
+//        style: .small
+//      )
+//    }
   }
 }
 

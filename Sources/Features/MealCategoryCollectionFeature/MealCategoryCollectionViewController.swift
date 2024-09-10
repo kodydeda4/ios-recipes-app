@@ -2,24 +2,33 @@ import Epoxy
 import UIKit
 import SwiftUI
 import Combine
+import Environment  
+import SharedViews
+import UIKitHelpers
+import ApiClient
 
-class MealCategoryCollectionViewController: CollectionViewController {
-  struct State {
+public final class MealCategoryCollectionViewController: CollectionViewController {
+  public struct State {
     var mealCategories = [ApiClient.MealCategory]()
     var cancellables = Set<AnyCancellable>()
+    
+    public init(mealCategories: [ApiClient.MealCategory] = [ApiClient.MealCategory](), cancellables: Set<AnyCancellable> = Set<AnyCancellable>()) {
+      self.mealCategories = mealCategories
+      self.cancellables = cancellables
+    }
   }
   
   private var state: State { didSet { setItems(items, animated: true) } }
   private var environment = Environment.shared
   
-  init(state: State) {
+  public init(state: State) {
     self.state = state
     super.init(layout: UICollectionViewCompositionalLayout.list)
     self.title = "Meal Categories"
     self.setItems(items, animated: false)
   }
   
-  override func viewDidLoad() {
+  public override func viewDidLoad() {
     super.viewDidLoad()
     self.environment.api.fetchAllMealCategories()
       .receive(on: self.environment.mainQueue)
@@ -46,22 +55,24 @@ extension MealCategoryCollectionViewController {
         dataID: DataID.row(mealCategory.id),
         content: .init(
           models: [
-            TextRow.barModel(
-              content: .init(title: "\(mealCategory.strCategory)"),
-              style: .small
-            ),
-            ImageMarquee.barModel(
-              content: .init(imageURL: mealCategory.strCategoryThumb),
-              style: .init(height: 150, contentMode: .scaleAspectFill)
-            )
+            //@DEDA
+//            TextRow.barModel(
+//              content: .init(title: "\(mealCategory.strCategory)"),
+//              style: .small
+//            ),
+//            ImageMarquee.barModel(
+//              content: .init(imageURL: mealCategory.strCategoryThumb),
+//              style: .init(height: 150, contentMode: .scaleAspectFill)
+//            )
           ],
           selectedBackgroundColor: .secondarySystemBackground),
         style: .init(card: .init())
       )
       .didSelect { [weak self] _ in
-        self?.environment.navigationStack.push(.mealCategory(
-          .init(mealCategory: mealCategory))
-        )
+        // @DEDA
+//        self?.environment.navigationStack.push(.mealCategory(
+//          .init(mealCategory: mealCategory))
+//        )
       }
     }
   }

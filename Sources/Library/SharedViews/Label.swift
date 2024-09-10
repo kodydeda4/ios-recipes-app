@@ -1,11 +1,11 @@
 import EpoxyCore
 import UIKit
 
-final class Label: UILabel, EpoxyableView {
+public final class Label: UILabel, EpoxyableView {
   
   // MARK: Lifecycle
   
-  init(style: Style) {
+  public init(style: Style) {
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
     font = style.font
@@ -23,7 +23,7 @@ final class Label: UILabel, EpoxyableView {
   
   // MARK: StyledView
   
-  struct Style: Hashable {
+  public struct Style: Hashable {
     let font: UIFont
     let showLabelBackground: Bool
     var numberOfLines = 0
@@ -31,15 +31,14 @@ final class Label: UILabel, EpoxyableView {
   
   // MARK: ContentConfigurableView
   
-  typealias Content = String
+  public typealias Content = String
   
-  func setContent(_ content: String, animated _: Bool) {
+  public func setContent(_ content: String, animated _: Bool) {
     text = content
   }
-  
 }
 
-extension Label.Style {
+public extension Label.Style {
   static func style(
     with textStyle: UIFont.TextStyle,
     showBackground: Bool = false)

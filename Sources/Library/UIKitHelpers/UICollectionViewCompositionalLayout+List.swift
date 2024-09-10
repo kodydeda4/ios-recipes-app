@@ -3,7 +3,7 @@ import UIKit
 
 // MARK: - UICollectionViewCompositionalLayout
 
-extension UICollectionViewCompositionalLayout {
+public extension UICollectionViewCompositionalLayout {
   static var list: UICollectionViewCompositionalLayout {
     if #available(iOS 14, *) {
       return UICollectionViewCompositionalLayout { _, layoutEnvironment in

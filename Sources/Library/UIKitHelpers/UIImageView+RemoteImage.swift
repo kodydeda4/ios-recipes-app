@@ -4,11 +4,11 @@ import UIKit
 
 /// Note that this is a quick and dirty solution for downloading images and
 /// should by no means be used in a production app.
-extension UIImageView {
+public extension UIImageView {
 
   // MARK: Internal
 
-  func setURL(_ url: URL?) {
+  public func setURL(_ url: URL?) {
     // Currently loading an image, URL is updated to nil:
     guard let url = url else {
       if let storage = storage {
