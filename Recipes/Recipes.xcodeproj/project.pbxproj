@@ -92,7 +92,7 @@
 			children = (
 				331B7D8D2C8B43A70033DFA9 /* AppDelegate.swift */,
 				331B7DA22C8B43FE0033DFA9 /* Assets */,
-				33C94DE82C90D52E004C452D /* ApplicationSources */,
+				33C94DE82C90D52E004C452D /* Sources */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -218,14 +218,14 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
-		33C94DE82C90D52E004C452D /* ApplicationSources */ = {
+		33C94DE82C90D52E004C452D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				33741DDB2C90DED9003607E6 /* Dependencies */,
 				33C94DD72C90D32A004C452D /* Features */,
 				33C94DE72C90D523004C452D /* Library */,
 			);
-			path = ApplicationSources;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		33C94DE92C90D5D0004C452D /* Helpers */ = {
