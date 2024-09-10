@@ -24,13 +24,18 @@ public final class TextRow: UIView, EpoxyableView {
     let title: UIFont.TextStyle
     let body: UIFont.TextStyle
 
-    static var small = Self(title: .headline, body: .body)
-    static var large = Self(title: .body, body: .caption1)
+    public static var small = Self(title: .headline, body: .body)
+    public static var large = Self(title: .body, body: .caption1)
   }
 
   public struct Content: Equatable {
     var title: String?
     var body: String?
+    
+    public init(title: String? = nil, body: String? = nil) {
+      self.title = title
+      self.body = body
+    }
   }
 
   public func setContent(_ content: Content, animated _: Bool) {

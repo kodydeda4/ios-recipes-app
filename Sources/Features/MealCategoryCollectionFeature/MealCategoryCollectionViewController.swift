@@ -58,25 +58,21 @@ extension MealCategoryCollectionViewController {
         dataID: DataID.row(mealCategory.id),
         content: .init(
           models: [
-            //@DEDA
-//            TextRow.barModel(
-//              content: .init(title: "\(mealCategory.strCategory)"),
-//              style: .small
-//            ),
-//            ImageMarquee.barModel(
-//              content: .init(imageURL: mealCategory.strCategoryThumb),
-//              style: .init(height: 150, contentMode: .scaleAspectFill)
-//            )
+            TextRow.barModel(
+              content: .init(title: "\(mealCategory.strCategory)"),
+              style: .small
+            ),
+            ImageMarquee.barModel(
+              content: .init(imageURL: mealCategory.strCategoryThumb),
+              style: .init(height: 150, contentMode: .scaleAspectFill)
+            )
           ],
           selectedBackgroundColor: .secondarySystemBackground
         ),
         style: .init(card: .init())
       )
       .didSelect { [weak self] _ in
-        // @DEDA
-//        self?.environment.navigationStack.push(.mealCategory(
-//          .init(mealCategory: mealCategory))
-//        )
+        self?.environment.navigationStack.push(.mealCategory(mealCategory))
       }
     }
   }

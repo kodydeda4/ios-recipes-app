@@ -8,6 +8,10 @@ public final class MealDetailsViewController: CollectionViewController {
 
   public struct State {
     let mealDetails: ApiClient.MealDetails
+
+    public init(mealDetails: ApiClient.MealDetails) {
+      self.mealDetails = mealDetails
+    }
   }
 
   private var state: State {
@@ -16,7 +20,7 @@ public final class MealDetailsViewController: CollectionViewController {
     }
   }
 
-  init(state: State) {
+  public init(state: State) {
     self.state = state
     super.init(layout: UICollectionViewCompositionalLayout.list)
     self.title = state.mealDetails.strMeal
@@ -41,29 +45,28 @@ extension MealDetailsViewController {
       content: .init(imageURL: URL(string: "\(state.mealDetails.strMealThumb)")!),
       style: .init(height: 250, contentMode: .scaleAspectFill)
     )
-    //@DEDA
-//    TextRow.itemModel(
-//      dataID: DataID.instructionsTitle,
-//      content: .init(title: "🛒 Ingredients"),
-//      style: .large
-//    )
-//    TextRow.itemModel(
-//      dataID: DataID.ingredientsSubtitle,
-//      content: .init(title: "\(state.mealDetails.strInstructions)"),
-//      style: .small
-//    )
-//    TextRow.itemModel(
-//      dataID: DataID.instructionsTitle,
-//      content: .init(title: "📖 Instructions"),
-//      style: .large
-//    )
-//    state.mealDetails.ingredientMeasures.compactMap { value in
-//      TextRow.itemModel(
-//        dataID: DataID.instructionsSubtitle,
-//        content: .init(title: value.strMeasure + " " + value.strIngredient),
-//        style: .small
-//      )
-//    }
+    TextRow.itemModel(
+      dataID: DataID.instructionsTitle,
+      content: .init(title: "🛒 Ingredients"),
+      style: .large
+    )
+    TextRow.itemModel(
+      dataID: DataID.ingredientsSubtitle,
+      content: .init(title: "\(state.mealDetails.strInstructions)"),
+      style: .small
+    )
+    TextRow.itemModel(
+      dataID: DataID.instructionsTitle,
+      content: .init(title: "📖 Instructions"),
+      style: .large
+    )
+    state.mealDetails.ingredientMeasures.compactMap { value in
+      TextRow.itemModel(
+        dataID: DataID.instructionsSubtitle,
+        content: .init(title: value.strMeasure + " " + value.strIngredient),
+        style: .small
+      )
+    }
   }
 }
 

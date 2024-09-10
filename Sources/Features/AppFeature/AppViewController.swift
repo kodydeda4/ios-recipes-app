@@ -5,6 +5,7 @@ import Epoxy
 import MealCategoryCollectionFeature
 import MealCollectionFeature
 import MealDetailsFeature
+import NavigationControllerClient
 import SharedViews
 import SwiftUI
 import UIKit
@@ -15,8 +16,7 @@ public final class AppViewController: NavigationController {
   static var previewValue = AppViewController()
 
   struct State {
-//    var path = [NavigationControllerClient.Path]()
-    //@DEDA
+    var path = [NavigationControllerClient.Path]()
   }
 
   private var state: State { didSet { setStack(stack, animated: true) } }
@@ -25,9 +25,8 @@ public final class AppViewController: NavigationController {
   private init() {
     self.state = State()
     super.init(wrapNavigation: NavigationWrapperViewController.init)
-    //@DEDA
-//    self.environment.navigationStack.push = { self.state.path.append($0) }
-//    self.environment.navigationStack.pop = { self.state.path.removeLast() }
+    self.environment.navigationStack.push = { self.state.path.append($0) }
+    self.environment.navigationStack.pop = { self.state.path.removeLast() }
     setStack(stack, animated: false)
   }
 }
@@ -46,29 +45,32 @@ private extension AppViewController {
       MealCategoryCollectionViewController(state: .init())
     }
 
-    // @DEDA
-//    for path in state.path {
-//      switch path {
-//        
-//      case let .mealCategory(state):
-//        NavigationModel(
-//          dataID: DataID.mealCategory(state.mealCategory.id),
-//          makeViewController: { MealCollectionViewController(state: state) },
-//          remove: { [weak self] in
-//            self?.environment.navigationStack.pop()
-//          }
-//        )
-//        
-//      case let .mealDetails(state):
-//        NavigationModel(
-//          dataID: DataID.mealDetails(state.mealDetails.id),
-//          makeViewController: { MealDetailsViewController(state: state) },
-//          remove: { [weak self] in
-//            self?.environment.navigationStack.pop()
-//          }
-//        )
-//      }
-//    }
+    for path in state.path {
+      switch path {
+
+      case let .mealCategory(value):
+        NavigationModel(
+          dataID: DataID.mealCategory(value.id),
+          makeViewController: {
+            MealCollectionViewController(state: .init(mealCategory: value))
+          },
+          remove: { [weak self] in
+            self?.environment.navigationStack.pop()
+          }
+        )
+
+      case let .mealDetails(value):
+        NavigationModel(
+          dataID: DataID.mealDetails(value.id),
+          makeViewController: {
+            MealDetailsViewController(state: .init(mealDetails: value))
+          },
+          remove: { [weak self] in
+            self?.environment.navigationStack.pop()
+          }
+        )
+      }
+    }
   }
 }
 
