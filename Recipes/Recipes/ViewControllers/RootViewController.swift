@@ -4,65 +4,55 @@ import SwiftUI
 import Combine
 
 final class RootViewController: NavigationController {
+  static var shared = RootViewController()
+  
   private init() {
     super.init(wrapNavigation: NavigationWrapperViewController.init(navigationController:))
     setStack(stack, animated: false)
   }
   
-  static var shared = RootViewController()
-  
-  private enum DataID: Hashable {
-    case index
-    case mealCategory(ApiClient.MealCategory.ID)
-    case meal(ApiClient.Meal.ID)
-  }
-  
-  private struct State {
-    var destinationMealDetails: ApiClient.MealDetails?
-    var destinationMealCategory: ApiClient.MealCategory?
+  struct State {
+    var path = [Path]()
     var cancellables = Set<AnyCancellable>()
-  }
-  
-  private struct Environment {
-    var api = ApiClient.liveValue
-    var mainQueue = DispatchQueue.main
+    
+    enum Path {
+      case mealDetails(MealDetailsViewController.State)
+      case mealCategory(MealCollectionViewController.State)
+    }
   }
   
   private var state = State() {
     didSet { setStack(stack, animated: true) }
   }
   
-  private let environment = Environment()
-  
+  private enum DataID: Hashable {
+    case index
+    case mealCategory(ApiClient.MealCategory.ID)
+    case mealDetails(ApiClient.Meal.ID)
+  }
+
   @NavigationModelBuilder private var stack: [NavigationModel] {
     NavigationModel.root(dataID: DataID.index) {
       MealCategoryCollectionViewController(state: .init())
     }
     
-    if let value = state.destinationMealCategory {
-      NavigationModel(
-        dataID: DataID.mealCategory(value.id),
-        makeViewController: {
-          MealCollectionViewController(
-            state: .init(mealCategory: value)
-          )
-        },
-        remove: { [weak self] in
-          self?.state.destinationMealDetails = .none
-        }
-      )
-    }
-    
-    if let value = state.destinationMealDetails {
-      NavigationModel(
-        dataID: DataID.meal(value.id),
-        makeViewController: {
-          MealDetailsViewController(mealDetails: value)
-        },
-        remove: { [weak self] in
-          self?.state.destinationMealDetails = .none
-        }
-      )
+    for path in state.path {
+      switch path {
+        
+      case let .mealCategory(path):
+        NavigationModel(
+          dataID: DataID.mealCategory(path.mealCategory.id),
+          makeViewController: { MealCollectionViewController(state: path) },
+          remove: { [weak self] in self?.pop() }
+        )
+        
+      case let .mealDetails(path):
+        NavigationModel(
+          dataID: DataID.mealDetails(path.mealDetails.id),
+          makeViewController: { MealDetailsViewController(state: path) },
+          remove: { [weak self] in self?.pop() }
+        )
+      }
     }
   }
 }
@@ -70,20 +60,12 @@ final class RootViewController: NavigationController {
 // MARK: - Global Navigation
 
 extension RootViewController {
-  func navigate(mealDetails id: ApiClient.MealDetails.ID) {
-    self.environment.api.fetchMealDetailsById(id)
-      .receive(on: self.environment.mainQueue)
-      .sink { error in
-        print(error)
-      } receiveValue: { [weak self] value in
-        print(value)
-        self?.state.destinationMealDetails = value.last
-      }
-      .store(in: &self.state.cancellables)
+  func push(_ value: State.Path) {
+    self.state.path.append(value)
   }
   
-  func navigate(mealCategory value: ApiClient.MealCategory) {
-    self.state.destinationMealCategory = value
+  func pop() {
+    self.state.path.removeLast()
   }
 }
 

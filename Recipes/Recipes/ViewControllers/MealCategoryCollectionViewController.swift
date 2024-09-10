@@ -15,10 +15,6 @@ class MealCategoryCollectionViewController: CollectionViewController {
     self.setItems(items, animated: false)
   }
   
-  private enum DataID: Hashable  {
-    case row(ApiClient.MealCategory.ID)
-  }
-  
   struct State {
     var mealCategories = [ApiClient.MealCategory]()
     var cancellables = Set<AnyCancellable>()
@@ -35,6 +31,10 @@ class MealCategoryCollectionViewController: CollectionViewController {
   
   private let environment = Environment()
   
+  private enum DataID: Hashable  {
+    case row(ApiClient.MealCategory.ID)
+  }
+
   private func onAppear() {
     self.environment.api.fetchAllMealCategories()
       .receive(on: self.environment.mainQueue)
@@ -66,7 +66,9 @@ class MealCategoryCollectionViewController: CollectionViewController {
         style: .init(card: .init())
       )
       .didSelect { _ in
-        RootViewController.shared.navigate(mealCategory: mealCategory)
+        RootViewController.shared.push(.mealCategory(
+          .init(mealCategory: mealCategory))
+        )
       }
     }
   }

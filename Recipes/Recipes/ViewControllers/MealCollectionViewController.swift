@@ -12,10 +12,6 @@ class MealCollectionViewController: CollectionViewController {
     setItems(items, animated: false)
   }
   
-  private enum DataID: Hashable  {
-    case row(ApiClient.Meal.ID)
-  }
-  
   struct State {
     let mealCategory: ApiClient.MealCategory
     var meals = [ApiClient.Meal]()
@@ -32,6 +28,10 @@ class MealCollectionViewController: CollectionViewController {
   }
   
   private let environment = Environment()
+    
+  private enum DataID: Hashable  {
+    case row(ApiClient.Meal.ID)
+  }
   
   private func onAppear() {
     self.environment.api.fetchAllMeals(self.state.mealCategory)
@@ -52,8 +52,22 @@ class MealCollectionViewController: CollectionViewController {
         content: .init(title: "\(meal.strMeal)"),
         style: .small
       )
-      .didSelect { _ in
-        RootViewController.shared.navigate(mealDetails: meal.id)
+      .didSelect { [weak self] _ in
+        guard let self else { return }
+        self.environment.api.fetchMealDetailsById(meal.id)
+          .receive(on: self.environment.mainQueue)
+          .sink { error in
+            print(error)
+          } receiveValue: { value in
+            print(value)
+            
+            if let mealDetails = value.last {
+              RootViewController.shared.push(.mealDetails(
+                .init(mealDetails: mealDetails))
+              )
+            }
+          }
+          .store(in: &self.state.cancellables)
       }
     }
   }

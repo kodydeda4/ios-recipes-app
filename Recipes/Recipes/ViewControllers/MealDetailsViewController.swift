@@ -3,13 +3,21 @@ import Epoxy
 import SwiftUI
 
 final class MealDetailsViewController: CollectionViewController {
-  let mealDetails: ApiClient.MealDetails
-  
-  init(mealDetails: ApiClient.MealDetails) {
-    self.mealDetails = mealDetails
+  init(state: State) {
+    self.state = state
     super.init(layout: UICollectionViewCompositionalLayout.list)
-    self.title = mealDetails.strMeal
+    self.title = state.mealDetails.strMeal
     setItems(items, animated: false)
+  }
+  
+  struct State {
+    let mealDetails: ApiClient.MealDetails
+  }
+  
+  private var state: State {
+    didSet {
+      setItems(items, animated: false)
+    }
   }
   
   private enum DataID {
@@ -19,11 +27,11 @@ final class MealDetailsViewController: CollectionViewController {
     case instructionsTitle
     case instructionsSubtitle
   }
-  
+
   @ItemModelBuilder private var items: [ItemModeling] {
     ImageMarquee.itemModel(
       dataID: DataID.headerImage,
-      content: .init(imageURL: URL(string: "\(mealDetails.strMealThumb)")!),
+      content: .init(imageURL: URL(string: "\(state.mealDetails.strMealThumb)")!),
       style: .init(height: 250, contentMode: .scaleAspectFill)
     )
     TextRow.itemModel(
@@ -33,7 +41,7 @@ final class MealDetailsViewController: CollectionViewController {
     )
     TextRow.itemModel(
       dataID: DataID.ingredientsSubtitle,
-      content: .init(title: "\(mealDetails.strInstructions)"),
+      content: .init(title: "\(state.mealDetails.strInstructions)"),
       style: .small
     )
     TextRow.itemModel(
@@ -41,7 +49,7 @@ final class MealDetailsViewController: CollectionViewController {
       content: .init(title: "📖 Instructions"),
       style: .large
     )
-    mealDetails.ingredientMeasures.compactMap { value in
+    state.mealDetails.ingredientMeasures.compactMap { value in
       TextRow.itemModel(
         dataID: DataID.instructionsSubtitle,
         content: .init(title: value.strMeasure + " " + value.strIngredient),
@@ -109,7 +117,7 @@ struct MealDetailsViewController_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
       UIViewControllerRepresenting {
-        MealDetailsViewController(mealDetails: .previewValue)
+        MealDetailsViewController(state: .init(mealDetails: .previewValue))
       }
     }
   }
