@@ -3,9 +3,6 @@ import UIKit
 import SwiftUI
 import Combine
 
-// @DEDA - 12:00 SHows you can use @UIBindable var model with Perception tracking package.
-// https://www.pointfree.co/episodes/ep290-cross-platform-swift-view-paradigms
-
 final class RootViewController: NavigationController {
   private init() {
     super.init(wrapNavigation: NavigationWrapperViewController.init(navigationController:))
@@ -68,7 +65,11 @@ final class RootViewController: NavigationController {
       )
     }
   }
-        
+}
+
+// MARK: - Global Navigation
+
+extension RootViewController {
   func navigate(mealDetails id: ApiClient.MealDetails.ID) {
     self.environment.api.fetchMealDetailsById(id)
       .receive(on: self.environment.mainQueue)
