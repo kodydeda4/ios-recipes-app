@@ -11,7 +11,6 @@
 		331B7D952C8B43A70033DFA9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 331B7D942C8B43A70033DFA9 /* Base */; };
 		331B7D972C8B43A90033DFA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 331B7D962C8B43A90033DFA9 /* Assets.xcassets */; };
 		331B7D9A2C8B43A90033DFA9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 331B7D992C8B43A90033DFA9 /* Base */; };
-		331B7DB92C8B49B70033DFA9 /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 331B7DB82C8B49B70033DFA9 /* Epoxy */; };
 		33EC509D2C90EB2300CC16F2 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 33EC509C2C90EB2300CC16F2 /* AppFeature */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				331B7DB92C8B49B70033DFA9 /* Epoxy in Frameworks */,
 				33EC509D2C90EB2300CC16F2 /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,7 +98,6 @@
 			);
 			name = Recipes;
 			packageProductDependencies = (
-				331B7DB82C8B49B70033DFA9 /* Epoxy */,
 				33EC509C2C90EB2300CC16F2 /* AppFeature */,
 			);
 			productName = Recipes;
@@ -399,11 +396,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		331B7DB82C8B49B70033DFA9 /* Epoxy */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 331B7DB72C8B49B70033DFA9 /* XCRemoteSwiftPackageReference "epoxy-ios" */;
-			productName = Epoxy;
-		};
 		33EC509C2C90EB2300CC16F2 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;

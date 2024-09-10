@@ -6,7 +6,7 @@ let package = Package(
   name: "ios-recipes-app",
   platforms: [.iOS(.v15)],
   products: [
-    // Dependencies
+    // Clients
     .library(name: "ApiClient"),
     .library(name: "Environment"),
     .library(name: "NavigationControllerClient"),
@@ -25,15 +25,17 @@ let package = Package(
     .package(url: "https://github.com/airbnb/epoxy-ios", from: "0.10.0"),
   ],
   targets: [
-    // Dependencies
-    .dependency("ApiClient"),
-    .dependency("NavigationControllerClient"),
-    .dependency("Environment", dependencies: [
+    // Clients
+    .client("ApiClient"),
+    .client("NavigationControllerClient", dependencies: [
+      "ApiClient"
+    ]),
+    .client("Environment", dependencies: [
       "ApiClient",
       "NavigationControllerClient",
     ]),
 
-    //    // Features
+    // Features
     .feature("AppFeature", dependencies: [
       "MealCategoryCollectionFeature",
       "MealCollectionFeature",
@@ -104,12 +106,12 @@ extension Target {
   }
 
   /// Create a target with the default path & dependencies for a dependency.
-  static func dependency(_ name: String, dependencies: [Target.Dependency] = []) -> Target {
+  static func client(_ name: String, dependencies: [Target.Dependency] = []) -> Target {
     .target(
       name: name,
       dependencies: dependencies + [
       ],
-      path: "Sources/Dependencies/\(name)"
+      path: "Sources/Clients/\(name)"
     )
   }
 
