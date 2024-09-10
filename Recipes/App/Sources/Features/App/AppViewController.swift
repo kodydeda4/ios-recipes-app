@@ -9,7 +9,6 @@ final class AppViewController: NavigationController {
   
   struct State {
     var path = [Path]()
-    var cancellables = Set<AnyCancellable>()
     
     enum Path {
       case mealDetails(MealDetailsViewController.State)
