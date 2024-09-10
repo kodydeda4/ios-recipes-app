@@ -9,16 +9,8 @@ class MealCategoryCollectionViewController: CollectionViewController {
     var cancellables = Set<AnyCancellable>()
   }
   
-  private struct Environment {
-    var api = ApiClient.liveValue
-    var mainQueue = DispatchQueue.main
-  }
-  
-  var state: State {
-    didSet { setItems(items, animated: true) }
-  }
-  
-  private let environment = Environment()
+  private var state: State { didSet { setItems(items, animated: true) } }
+  private var environment = Environment.shared
   
   init(state: State) {
     self.state = state
@@ -40,7 +32,7 @@ class MealCategoryCollectionViewController: CollectionViewController {
       .store(in: &state.cancellables)
   }
 }
-  
+
 // MARK: - View
 
 extension MealCategoryCollectionViewController {
@@ -66,8 +58,8 @@ extension MealCategoryCollectionViewController {
           selectedBackgroundColor: .secondarySystemBackground),
         style: .init(card: .init())
       )
-      .didSelect { _ in
-        AppViewController.shared.push(.mealCategory(
+      .didSelect { [weak self] _ in
+        self?.environment.navigationStack.push(.mealCategory(
           .init(mealCategory: mealCategory))
         )
       }

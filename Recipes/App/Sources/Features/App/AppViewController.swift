@@ -8,31 +8,21 @@ final class AppViewController: NavigationController {
   static var previewValue = AppViewController()
   
   struct State {
-    var path = [Path]()
-    
-    enum Path {
-      case mealDetails(MealDetailsViewController.State)
-      case mealCategory(MealCollectionViewController.State)
-    }
+    var path = [NavigationStackClient.Path]()
   }
   
-  private var state = State() {
-    didSet { setStack(stack, animated: true) }
-  }
+  private var state: State { didSet { setStack(stack, animated: true) } }
+  private var environment = Environment.shared
   
-  private init() {
+  private init(state: State = .init()) {
+    self.state = state
     super.init(wrapNavigation: NavigationWrapperViewController.init)
+    self.environment.navigationStack = .init(
+      push: { self.state.path.append($0)  },
+      pop: { self.state.path.removeLast() }
+    )
     setStack(stack, animated: false)
   }
-
-  public func push(_ value: State.Path) {
-    self.state.path.append(value)
-  }
-  
-  public func pop() {
-    self.state.path.removeLast()
-  }
-
 }
 
 // MARK: - View
@@ -56,14 +46,18 @@ extension AppViewController {
         NavigationModel(
           dataID: DataID.mealCategory(state.mealCategory.id),
           makeViewController: { MealCollectionViewController(state: state) },
-          remove: { [weak self] in self?.pop() }
+          remove: { [weak self] in
+            self?.environment.navigationStack.pop()
+          }
         )
         
       case let .mealDetails(state):
         NavigationModel(
           dataID: DataID.mealDetails(state.mealDetails.id),
           makeViewController: { MealDetailsViewController(state: state) },
-          remove: { [weak self] in self?.pop() }
+          remove: { [weak self] in
+            self?.environment.navigationStack.pop()
+          }
         )
       }
     }

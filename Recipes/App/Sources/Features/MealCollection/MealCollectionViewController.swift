@@ -11,16 +11,8 @@ class MealCollectionViewController: CollectionViewController {
     var cancellables = Set<AnyCancellable>()
   }
   
-  private struct Environment {
-    var api = ApiClient.liveValue
-    var mainQueue = DispatchQueue.main
-  }
-  
-  private var state: State {
-    didSet { setItems(items, animated: true) }
-  }
-  
-  private let environment = Environment()
+  private var state: State { didSet { setItems(items, animated: true) } }
+  private var environment = Environment.shared
   
   init(state: State) {
     self.state = state
@@ -47,10 +39,10 @@ class MealCollectionViewController: CollectionViewController {
       .receive(on: self.environment.mainQueue)
       .sink { error in
         print(error)
-      } receiveValue: { value in
+      } receiveValue: { [weak self] value in
         print(value)
         if let mealDetails = value.last {
-          AppViewController.shared.push(.mealDetails(
+          self?.environment.navigationStack.push(.mealDetails(
             .init(mealDetails: mealDetails))
           )
         }
