@@ -22,7 +22,7 @@ final class AppViewController: NavigationController {
   }
   
   private init() {
-    super.init(wrapNavigation: NavigationWrapperViewController.init(navigationController:))
+    super.init(wrapNavigation: NavigationWrapperViewController.init)
     setStack(stack, animated: false)
   }
 
