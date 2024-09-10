@@ -64,8 +64,9 @@ class MealCategoryCollectionViewController: CollectionViewController {
           ],
           selectedBackgroundColor: .secondarySystemBackground),
         style: .init(card: .init())
-      ).didSelect { _ in
-        RootViewController.shared.navigateToMealCategory(mealCategory)
+      )
+      .didSelect { _ in
+        RootViewController.shared.navigate(mealCategory: mealCategory)
       }
     }
   }

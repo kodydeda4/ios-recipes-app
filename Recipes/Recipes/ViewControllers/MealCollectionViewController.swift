@@ -53,7 +53,7 @@ class MealCollectionViewController: CollectionViewController {
         style: .small
       )
       .didSelect { _ in
-        RootViewController.shared.navigateToMealDetails(id: meal.id)
+        RootViewController.shared.navigate(mealDetails: meal.id)
       }
     }
   }

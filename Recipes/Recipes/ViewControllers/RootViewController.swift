@@ -38,7 +38,7 @@ final class RootViewController: NavigationController {
   private let environment = Environment()
   
   @NavigationModelBuilder private var stack: [NavigationModel] {
-    NavigationModel.root(dataID: DataID.index) { [weak self] in
+    NavigationModel.root(dataID: DataID.index) {
       MealCategoryCollectionViewController(state: .init())
     }
     
@@ -69,7 +69,7 @@ final class RootViewController: NavigationController {
     }
   }
         
-  func navigateToMealDetails(id: ApiClient.MealDetails.ID) {
+  func navigate(mealDetails id: ApiClient.MealDetails.ID) {
     self.environment.api.fetchMealDetailsById(id)
       .receive(on: self.environment.mainQueue)
       .sink { error in
@@ -81,7 +81,7 @@ final class RootViewController: NavigationController {
       .store(in: &self.state.cancellables)
   }
   
-  func navigateToMealCategory(_ value: ApiClient.MealCategory) {
+  func navigate(mealCategory value: ApiClient.MealCategory) {
     self.state.destinationMealCategory = value
   }
 }
