@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   -> Bool
   {
     window = UIWindow(frame: UIScreen.main.bounds)
-    window?.rootViewController = RootViewController.shared
+    window?.rootViewController = AppViewController.shared
     window?.makeKeyAndVisible()
     return true
   }

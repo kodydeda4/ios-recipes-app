@@ -1,11 +1,12 @@
-import Epoxy
 import UIKit
 import SwiftUI
 import Combine
+import Epoxy
 
-final class RootViewController: NavigationController {
-  static var shared = RootViewController()
-  
+final class AppViewController: NavigationController {
+  static var shared = AppViewController()
+  static var previewValue = AppViewController()
+
   private init() {
     super.init(wrapNavigation: NavigationWrapperViewController.init(navigationController:))
     setStack(stack, animated: false)
@@ -25,12 +26,24 @@ final class RootViewController: NavigationController {
     didSet { setStack(stack, animated: true) }
   }
   
+  public func push(_ value: State.Path) {
+    self.state.path.append(value)
+  }
+  
+  public func pop() {
+    self.state.path.removeLast()
+  }
+}
+
+// MARK: - View
+
+extension AppViewController {
   private enum DataID: Hashable {
     case index
     case mealCategory(ApiClient.MealCategory.ID)
     case mealDetails(ApiClient.Meal.ID)
   }
-
+  
   @NavigationModelBuilder private var stack: [NavigationModel] {
     NavigationModel.root(dataID: DataID.index) {
       MealCategoryCollectionViewController(state: .init())
@@ -57,24 +70,13 @@ final class RootViewController: NavigationController {
   }
 }
 
-// MARK: - Global Navigation
+// MARK: - SwiftUI Previews
 
-extension RootViewController {
-  func push(_ value: State.Path) {
-    self.state.path.append(value)
-  }
-  
-  func pop() {
-    self.state.path.removeLast()
-  }
-}
-
-// MARK: - Previews
-
-struct RootViewController_Previews: PreviewProvider {
+struct AppViewController_Previews: PreviewProvider {
   static var previews: some View {
     UIViewControllerRepresenting {
-      RootViewController.shared
+      AppViewController.previewValue
     }
   }
 }
+

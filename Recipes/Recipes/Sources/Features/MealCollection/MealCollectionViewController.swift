@@ -28,10 +28,7 @@ class MealCollectionViewController: CollectionViewController {
   }
   
   private let environment = Environment()
-    
-  private enum DataID: Hashable  {
-    case row(ApiClient.Meal.ID)
-  }
+  
   
   private func onAppear() {
     self.environment.api.fetchAllMeals(self.state.mealCategory)
@@ -44,7 +41,15 @@ class MealCollectionViewController: CollectionViewController {
       }
       .store(in: &state.cancellables)
   }
-  
+}
+
+// MARK: - View
+
+extension MealCollectionViewController {
+  private enum DataID: Hashable  {
+    case row(ApiClient.Meal.ID)
+  }
+
   @ItemModelBuilder private var items: [ItemModeling] {
     self.state.meals.map { meal in
       TextRow.itemModel(
@@ -62,7 +67,7 @@ class MealCollectionViewController: CollectionViewController {
             print(value)
             
             if let mealDetails = value.last {
-              RootViewController.shared.push(.mealDetails(
+              AppViewController.shared.push(.mealDetails(
                 .init(mealDetails: mealDetails))
               )
             }
@@ -73,7 +78,7 @@ class MealCollectionViewController: CollectionViewController {
   }
 }
 
-// MARK: - Previews
+// MARK: - SwiftUI Previews
 
 struct MealListViewController_Previews: PreviewProvider {
   static var previews: some View {
