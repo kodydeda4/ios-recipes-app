@@ -60,16 +60,21 @@ extension MealCategoryCollectionViewController {
           models: [
             TextRow.barModel(
               content: .init(title: "\(mealCategory.strCategory)"),
-              style: .small
+              style: .large
             ),
             ImageMarquee.barModel(
               content: .init(imageURL: mealCategory.strCategoryThumb),
-              style: .init(height: 150, contentMode: .scaleAspectFill)
+              style: .init(height: 100, contentMode: .scaleAspectFill)
             )
           ],
           selectedBackgroundColor: .secondarySystemBackground
         ),
-        style: .init(card: .init())
+        style: .init(card: .init(
+          cornerRadius: 12,
+          cardBackgroundColor: .systemGray6,
+          borderColor: .systemGray5,
+          borderWidth: 1
+        ))
       )
       .didSelect { [weak self] _ in
         self?.environment.navigationStack.push(.mealCategory(mealCategory))

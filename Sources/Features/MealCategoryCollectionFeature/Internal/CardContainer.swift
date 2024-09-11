@@ -35,7 +35,6 @@ final class CardContainer<ContentView: EpoxyableView>: UIView, EpoxyableView {
       self.card = card
     }
     
-    // swiftlint:disable implicitly_unwrapped_optional
     fileprivate var content: ContentView.Style!
     fileprivate var card: CardStyle
   }
@@ -46,10 +45,6 @@ final class CardContainer<ContentView: EpoxyableView>: UIView, EpoxyableView {
     var cardBackgroundColor = UIColor.secondarySystemBackground
     var borderColor = UIColor.tertiarySystemBackground
     var borderWidth: CGFloat = 1
-    var shadowColor = UIColor.black
-    var shadowOffset = CGSize(width: 0, height: 2)
-    var shadowRadius: CGFloat = 4
-    var shadowOpacity: Float = 0.2
   }
   
   let contentView: ContentView
@@ -73,21 +68,7 @@ final class CardContainer<ContentView: EpoxyableView>: UIView, EpoxyableView {
     return view
   }()
   
-  private lazy var shadow: UIView = {
-    let view = UIView()
-    view.backgroundColor = .white
-    view.clipsToBounds = false
-    view.translatesAutoresizingMaskIntoConstraints = false
-    view.layer.cornerRadius = style.cornerRadius
-    view.layer.shadowColor = style.shadowColor.cgColor
-    view.layer.shadowOffset = style.shadowOffset
-    view.layer.shadowOpacity = style.shadowOpacity
-    view.layer.shadowRadius = style.shadowRadius
-    return view
-  }()
-  
   private func addSubviews() {
-    addSubview(shadow)
     contentContainer.addSubview(contentView)
     addSubview(contentContainer)
   }
@@ -95,10 +76,6 @@ final class CardContainer<ContentView: EpoxyableView>: UIView, EpoxyableView {
   private func setUpConstraints() {
     contentView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      shadow.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-      shadow.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-      shadow.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-      shadow.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
       contentView.leadingAnchor.constraint(equalTo: contentContainer.leadingAnchor),
       contentView.topAnchor.constraint(equalTo: contentContainer.topAnchor),
       contentView.trailingAnchor.constraint(equalTo: contentContainer.trailingAnchor),
