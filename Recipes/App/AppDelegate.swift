@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     -> Bool
   {
     window = UIWindow(frame: UIScreen.main.bounds)
-    window?.rootViewController = AppViewController.shared
+    window?.rootViewController = AppViewController()
     window?.makeKeyAndVisible()
     return true
   }

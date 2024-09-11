@@ -12,18 +12,19 @@ import UIKit
 import UIKitHelpers
 
 public final class AppViewController: NavigationController {
-  public static var shared = AppViewController()
-  static var previewValue = AppViewController()
-
-  struct State {
+  public struct State {
     var path = [NavigationControllerClient.Path]()
+    
+    public init(path: [NavigationControllerClient.Path] = []) {
+      self.path = path
+    }
   }
 
   private var state: State { didSet { setStack(stack, animated: true) } }
   private var environment = Environment.shared
 
-  private init() {
-    self.state = State()
+  public init(state: State = .init()) {
+    self.state = state
     super.init(wrapNavigation: NavigationWrapperViewController.init)
     self.environment.navigationStack.push = { self.state.path.append($0) }
     self.environment.navigationStack.pop = { self.state.path.removeLast() }
@@ -79,7 +80,7 @@ private extension AppViewController {
 struct AppViewControler_Previews: PreviewProvider {
   static var previews: some View {
     UIViewControllerRepresenting {
-      AppViewController.previewValue
+      AppViewController()
     }
   }
 }
