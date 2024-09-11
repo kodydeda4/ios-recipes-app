@@ -8,7 +8,7 @@ public extension UIImageView {
 
   // MARK: Internal
 
-  public func setURL(_ url: URL?) {
+  func setURL(_ url: URL?) {
     // Currently loading an image, URL is updated to nil:
     guard let url = url else {
       if let storage = storage {
