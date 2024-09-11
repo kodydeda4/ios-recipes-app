@@ -1,6 +1,6 @@
 import ApiClient
 import Combine
-import Environment  
+import Environment
 import Epoxy
 import SharedViews
 import SwiftUI
@@ -11,7 +11,7 @@ public final class MealCategoryCollectionViewController: CollectionViewControlle
   public struct State {
     var mealCategories = [ApiClient.MealCategory]()
     var cancellables = Set<AnyCancellable>()
-
+    
     public init(
       mealCategories: [ApiClient.MealCategory] = [ApiClient.MealCategory](),
       cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
@@ -20,17 +20,17 @@ public final class MealCategoryCollectionViewController: CollectionViewControlle
       self.cancellables = cancellables
     }
   }
-
+  
   private var state: State { didSet { setItems(items, animated: true) } }
   private var environment = Environment.shared
-
+  
   public init(state: State) {
     self.state = state
-    super.init(layout: UICollectionViewCompositionalLayout.list)
+    super.init(layout: UICollectionViewCompositionalLayout.grid(columns: 2))
     self.title = "Meal Categories"
     self.setItems(items, animated: false)
   }
-
+  
   public override func viewDidLoad() {
     super.viewDidLoad()
     self.environment.api.fetchAllMealCategories()
@@ -51,7 +51,7 @@ extension MealCategoryCollectionViewController {
   private enum DataID: Hashable  {
     case row(ApiClient.MealCategory.ID)
   }
-
+  
   @ItemModelBuilder private var items: [ItemModeling] {
     self.state.mealCategories.map { (mealCategory: ApiClient.MealCategory) in
       CardContainer<BarStackView>.itemModel(
