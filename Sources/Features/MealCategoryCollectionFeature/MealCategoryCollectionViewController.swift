@@ -70,8 +70,6 @@ extension MealCategoryCollectionViewController {
         ),
         style: .init(card: .init(
           cornerRadius: 12,
-          cardBackgroundColor: .secondarySystemBackground,
-          borderColor: .systemGray5,
           borderWidth: 1
         ))
       )
