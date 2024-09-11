@@ -66,12 +66,11 @@ extension MealCategoryCollectionViewController {
               content: .init(imageURL: mealCategory.strCategoryThumb),
               style: .init(height: 100, contentMode: .scaleAspectFill)
             )
-          ],
-          selectedBackgroundColor: .secondarySystemBackground
+          ]
         ),
         style: .init(card: .init(
           cornerRadius: 12,
-          cardBackgroundColor: .systemGray6,
+          cardBackgroundColor: .secondarySystemBackground,
           borderColor: .systemGray5,
           borderWidth: 1
         ))
@@ -85,7 +84,7 @@ extension MealCategoryCollectionViewController {
 
 // MARK: - SwiftUI Previews
 
-struct MealCategoryListViewController_Previews: PreviewProvider {
+struct MealCategoryCollectionViewController_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
       UIViewControllerRepresenting {
